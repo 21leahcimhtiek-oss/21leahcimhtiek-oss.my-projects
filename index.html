@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoStack — Marketing Engine</title>
+  <link rel="stylesheet" href="styles.css" />
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       SIDEBAR
+  ═══════════════════════════════════════════════ -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
+      <div>
+        <div class="logo-name">AutoStack</div>
+        <div class="logo-sub"><!-- Business Name --></div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-section">MAIN</div>
+      <a class="nav-item active" onclick="navigate('dashboard')">
+        <span class="nav-icon">📊</span> Dashboard
+      </a>
+      <a class="nav-item" onclick="navigate('contacts')">
+        <span class="nav-icon">👥</span> Contacts
+      </a>
+
+      <div class="nav-section">CAMPAIGNS</div>
+      <a class="nav-item" onclick="navigate('acquisition')">
+        <span class="nav-icon">🎯</span> Acquisition
+      </a>
+      <a class="nav-item" onclick="navigate('conversion')">
+        <span class="nav-icon">🔁</span> Conversion
+      </a>
+      <a class="nav-item" onclick="navigate('nurture')">
+        <span class="nav-icon">📧</span> Nurture
+      </a>
+
+      <div class="nav-section">REVENUE</div>
+      <a class="nav-item" onclick="navigate('sales')">
+        <span class="nav-icon">💼</span> Sales Pipeline
+      </a>
+      <a class="nav-item" onclick="navigate('retention')">
+        <span class="nav-icon">🔒</span> Retention
+      </a>
+
+      <div class="nav-section">INSIGHTS</div>
+      <a class="nav-item" onclick="navigate('analytics')">
+        <span class="nav-icon">📈</span> Analytics
+      </a>
+      <a class="nav-item" onclick="navigate('orchestration')">
+        <span class="nav-icon">🔄</span> Orchestration
+      </a>
+      <a class="nav-item" onclick="navigate('creatives')">
+        <span class="nav-icon">🎨</span> Creatives
+      </a>
+      <a class="nav-item" onclick="navigate('copy')">
+        <span class="nav-icon">✍️</span> Copy Bank
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-avatar">U</div>
+      <div>
+        <div class="user-name"><!-- User Name --></div>
+        <div class="user-role"><!-- Role --></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════════════════════════ -->
+  <main class="main">
+
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="page-title" id="page-title">Dashboard</h1>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-primary" onclick="showToast('Action triggered!')">+ New Campaign</button>
+      </div>
+    </header>
+
+    <!-- Ticker -->
+    <div class="ticker-wrap">
+      <div class="ticker" id="ticker">
+        <!-- Populated by renderTicker() -->
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────
+         VIEWS — one per nav item
+    ───────────────────────────────────────── -->
+
+    <!-- DASHBOARD VIEW -->
+    <section class="view active" id="view-dashboard">
+      <div class="stat-grid" id="dash-stats">
+        <!-- Populated by renderDashStats() -->
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">Revenue by Channel</div>
+          <div id="revenue-chart"></div>
+        </div>
+        <div class="card">
+          <div class="card-header">Active Campaigns</div>
+          <div id="dash-campaigns"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">Live Event Feed</div>
+        <div id="event-feed"></div>
+      </div>
+    </section>
+
+    <!-- CONTACTS VIEW -->
+    <section class="view" id="view-contacts">
+      <div class="card">
+        <div class="card-header">
+          Contacts
+          <input class="search-input" type="text" placeholder="Search contacts..." oninput="filterContacts(this.value)" />
+        </div>
+        <table class="data-table" id="contacts-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Stage</th>
+              <th>Score</th>
+              <th>LTV</th>
+              <th>Last Activity</th>
+            </tr>
+          </thead>
+          <tbody id="contacts-body">
+            <!-- Populated by renderContacts() -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ACQUISITION VIEW -->
+    <section class="view" id="view-acquisition">
+      <div class="card">
+        <div class="card-header">Ad Channels</div>
+        <div class="ad-grid" id="ad-cards">
+          <!-- Populated by renderAdCards() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CONVERSION VIEW -->
+    <section class="view" id="view-conversion">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">A/B Tests</div>
+          <div id="ab-tests">
+            <!-- Populated by renderABTests() -->
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Funnel</div>
+          <div id="funnel">
+            <!-- Populated by renderFunnel() -->
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">Landing Pages</div>
+        <div id="landing-pages">
+          <!-- Populated by renderLandingPages() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- NURTURE VIEW -->
+    <section class="view" id="view-nurture">
+      <div class="card">
+        <div class="card-header">Email Sequences</div>
+        <div id="sequences">
+          <!-- Populated by renderSequences() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SALES VIEW -->
+    <section class="view" id="view-sales">
+      <div class="card">
+        <div class="card-header">Pipeline</div>
+        <div class="pipeline" id="pipeline">
+          <!-- Populated by renderPipeline() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- RETENTION VIEW -->
+    <section class="view" id="view-retention">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">Loyalty Tiers</div>
+          <div id="loyalty-grid">
+            <!-- Populated by renderLoyalty() -->
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Automated Rules</div>
+          <div id="rules">
+            <!-- Populated by renderRules() -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANALYTICS VIEW -->
+    <section class="view" id="view-analytics">
+      <div class="card">
+        <div class="card-header">KPI Scorecard</div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Metric</th><th>Target</th><th>Actual</th><th>Status</th></tr>
+          </thead>
+          <tbody id="kpi-table">
+            <!-- Populated by renderKPITable() -->
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-header">Channel Attribution</div>
+        <div id="attribution">
+          <!-- Populated by renderAttribution() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ORCHESTRATION VIEW -->
+    <section class="view" id="view-orchestration">
+      <div class="card">
+        <div class="card-header">Automation Workflows</div>
+        <div class="workflow-grid" id="workflows">
+          <!-- Populated by renderWorkflows() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CREATIVES VIEW -->
+    <section class="view" id="view-creatives">
+      <div class="card">
+        <div class="card-header">Creative Assets</div>
+        <div class="creative-grid" id="creatives">
+          <!-- Populated by renderCreatives() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- COPY BANK VIEW -->
+    <section class="view" id="view-copy">
+      <div class="card">
+        <div class="card-header">Copy Bank</div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Asset</th><th>Type</th><th>Channel</th><th>Content</th><th>Status</th></tr>
+          </thead>
+          <tbody id="copy-body">
+            <!-- Populated by renderCopyBank() -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       DATA STORE
+  ═══════════════════════════════════════════════ -->
+  <script src="src/data/store.js"></script>
+
+  <!-- ═══════════════════════════════════════════════
+       MODULE SCRIPTS
+  ═══════════════════════════════════════════════ -->
+  <script src="src/js/modules/acquisition.js"></script>
+  <script src="src/js/modules/conversion.js"></script>
+  <script src="src/js/modules/nurture.js"></script>
+  <script src="src/js/modules/sales.js"></script>
+  <script src="src/js/modules/retention.js"></script>
+  <script src="src/js/modules/analytics.js"></script>
+  <script src="src/js/modules/orchestration.js"></script>
+
+  <!-- ═══════════════════════════════════════════════
+       CORE APP
+  ═══════════════════════════════════════════════ -->
+  <script src="src/js/app.js"></script>
+
+</body>
+</html>
