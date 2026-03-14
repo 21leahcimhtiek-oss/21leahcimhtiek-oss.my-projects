@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aurora Rays LLC — Ad Creative Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0a14;font-family:'Inter',sans-serif;color:#fff;padding:40px 24px}
+:root{--violet:#7C3AED;--amber:#F59E0B;--violet-light:rgba(124,58,237,.15);--amber-light:rgba(245,158,11,.15)}
+h1{font-size:28px;font-weight:900;background:linear-gradient(90deg,var(--violet),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.subtitle{color:#666;font-size:14px;margin-bottom:40px}
+.section{margin-bottom:56px}
+.section-title{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.section-title span{background:var(--violet);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700}
+.section-sub{font-size:13px;color:#555;margin-bottom:20px}
+.grid{display:flex;flex-wrap:wrap;gap:20px}
+
+/* Google Ad */
+.google-ad{background:#fff;border-radius:12px;padding:20px 24px;width:480px;box-shadow:0 4px 24px rgba(0,0,0,.5)}
+.g-label{font-size:11px;color:#006621;font-weight:600;margin-bottom:4px}
+.g-url{font-size:13px;color:#006621;margin-bottom:6px}
+.g-title{font-size:20px;color:#1a0dab;font-weight:600;margin-bottom:6px;line-height:1.3;cursor:pointer}
+.g-title:hover{text-decoration:underline}
+.g-desc{font-size:14px;color:#545454;line-height:1.5}
+.g-ext{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap}
+.g-ext a{font-size:13px;color:#1a0dab;text-decoration:none}
+.g-ext a:hover{text-decoration:underline}
+
+/* Meta Ad */
+.meta-ad{background:#1c1e21;border-radius:12px;overflow:hidden;width:380px;box-shadow:0 4px 24px rgba(0,0,0,.5)}
+.meta-header{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.meta-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--amber));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.meta-name{font-size:14px;font-weight:700;color:#e4e6eb}
+.meta-sponsored{font-size:11px;color:#b0b3b8}
+.meta-image{width:100%;height:220px;background:linear-gradient(135deg,#0a0a14 0%,#1a0a2e 50%,#0a0a14 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;position:relative;overflow:hidden}
+.meta-image::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,rgba(124,58,237,.3),transparent 70%)}
+.meta-tagline{font-size:22px;font-weight:900;text-align:center;line-height:1.2;z-index:1;padding:0 20px}
+.meta-tagline em{color:var(--amber);font-style:normal}
+.meta-body{padding:12px 14px}
+.meta-headline{font-size:15px;font-weight:700;color:#e4e6eb;margin-bottom:4px}
+.meta-desc{font-size:13px;color:#b0b3b8;margin-bottom:12px}
+.meta-cta{background:var(--violet);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;width:100%;transition:background .15s}
+.meta-cta:hover{background:#6D28D9}
+
+/* LinkedIn Ad */
+.linkedin-ad{background:#1b1f23;border-radius:12px;overflow:hidden;width:420px;box-shadow:0 4px 24px rgba(0,0,0,.5)}
+.li-header{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #2a2a3a}
+.li-avatar{width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,var(--violet),var(--amber));display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.li-name{font-size:14px;font-weight:700;color:#e0e0e0}
+.li-meta{font-size:11px;color:#888}
+.li-body{padding:14px 16px}
+.li-headline{font-size:16px;font-weight:800;color:#e0e0e0;margin-bottom:8px;line-height:1.3}
+.li-text{font-size:13px;color:#aaa;line-height:1.6;margin-bottom:12px}
+.li-image{width:100%;height:160px;background:linear-gradient(135deg,#0a0a14,#1a0a2e);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;margin-bottom:12px;border-radius:8px;position:relative;overflow:hidden}
+.li-image::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(124,58,237,.25),transparent 65%)}
+.li-image-text{font-size:18px;font-weight:900;color:#fff;z-index:1;text-align:center;padding:0 20px}
+.li-image-sub{font-size:12px;color:var(--amber);z-index:1;font-weight:600}
+.li-cta{background:var(--violet);color:#fff;border:none;padding:9px 20px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer}
+
+/* Story/TikTok */
+.story-ad{width:220px;height:390px;background:#0a0a14;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 4px 24px rgba(0,0,0,.6)}
+.story-bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 70%,rgba(124,58,237,.35),transparent 65%)}
+.story-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;padding:20px 16px}
+.story-logo{display:flex;align-items:center;gap:6px;margin-bottom:auto}
+.story-logo-icon{width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,var(--violet),var(--amber));display:flex;align-items:center;justify-content:center;font-size:12px}
+.story-logo-text{font-size:13px;font-weight:800;color:#fff}
+.story-main{text-align:center;margin:auto 0}
+.story-icon{font-size:44px;margin-bottom:10px}
+.story-headline{font-size:19px;font-weight:900;line-height:1.2;margin-bottom:8px}
+.story-headline em{color:var(--amber);font-style:normal}
+.story-sub{font-size:11px;color:#aaa;margin-bottom:14px}
+.story-btn{background:var(--violet);color:#fff;border:none;padding:10px 20px;border-radius:30px;font-size:13px;font-weight:800;cursor:pointer;width:100%}
+.story-swipe{font-size:10px;color:#666;text-align:center;margin-top:8px}
+
+/* TikTok */
+.tiktok-ad{width:220px;height:390px;background:#000;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 4px 24px rgba(0,0,0,.6)}
+.tiktok-bg{position:absolute;inset:0;background:linear-gradient(180deg,#0a0a14 0%,#1a0a2e 50%,#0a0a14 100%)}
+.tiktok-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;padding:16px}
+.tiktok-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:auto}
+.tiktok-badge{background:rgba(124,58,237,.3);border:1px solid var(--violet);color:#A78BFA;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px}
+.tiktok-main{text-align:center;margin:auto 0;padding:16px 0}
+.tiktok-pov{font-size:12px;color:var(--amber);font-weight:700;margin-bottom:8px}
+.tiktok-icon{font-size:36px;margin-bottom:8px}
+.tiktok-headline{font-size:17px;font-weight:900;line-height:1.2;margin-bottom:10px}
+.tiktok-sub{font-size:10px;color:#aaa;margin-bottom:12px}
+.tiktok-btn{background:var(--violet);color:#fff;border:none;padding:9px 16px;border-radius:6px;font-size:12px;font-weight:800;cursor:pointer;width:100%}
+.tiktok-right{position:absolute;right:10px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:16px;align-items:center}
+.tiktok-action{display:flex;flex-direction:column;align-items:center;gap:2px}
+.tiktok-action-icon{font-size:22px}
+.tiktok-action-count{font-size:10px;color:#aaa}
+
+/* YouTube */
+.youtube-ad{background:#0f0f0f;border-radius:12px;overflow:hidden;width:480px;box-shadow:0 4px 24px rgba(0,0,0,.5)}
+.yt-video{width:100%;height:200px;background:linear-gradient(135deg,#0a0a14,#1a0a2e);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;position:relative}
+.yt-video::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(124,58,237,.2),transparent 65%)}
+.yt-play{width:56px;height:56px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;z-index:1;cursor:pointer}
+.yt-title{font-size:14px;font-weight:700;color:#fff;z-index:1;text-align:center;padding:0 20px}
+.yt-skip{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.7);color:#fff;font-size:11px;padding:4px 10px;border-radius:4px;z-index:2}
+.yt-body{padding:12px 14px}
+.yt-channel{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.yt-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--amber));display:flex;align-items:center;justify-content:center;font-size:14px}
+.yt-name{font-size:13px;font-weight:600;color:#e0e0e0}
+.yt-sub{font-size:11px;color:#888}
+.yt-cta{background:var(--violet);color:#fff;border:none;padding:8px 16px;border-radius:4px;font-size:12px;font-weight:700;cursor:pointer;margin-top:8px}
+
+/* Display Banners */
+.banner-728{width:100%;max-width:728px;height:90px;background:linear-gradient(90deg,#0a0a14 0%,#1a0a2e 50%,#0a0a14 100%);border-radius:8px;display:flex;align-items:center;padding:0 24px;gap:20px;position:relative;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.5)}
+.banner-728::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:200px;height:200px;background:radial-gradient(circle,rgba(124,58,237,.2),transparent 70%)}
+.banner-logo{font-size:16px;font-weight:900;background:linear-gradient(90deg,var(--violet),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap;z-index:1}
+.banner-divider{width:1px;height:50px;background:rgba(124,58,237,.4)}
+.banner-text{z-index:1;flex:1}
+.banner-text h3{font-size:16px;font-weight:800;color:#fff;margin-bottom:2px}
+.banner-text p{font-size:12px;color:#888}
+.banner-cta{background:var(--violet);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;z-index:1}
+
+.banner-300{width:300px;height:250px;background:linear-gradient(180deg,#0a0a14 0%,#1a0a2e 60%,#0a0a14 100%);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:20px;position:relative;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.5)}
+.banner-300::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,rgba(124,58,237,.2),transparent 65%)}
+.b-logo{font-size:14px;font-weight:900;background:linear-gradient(90deg,var(--violet),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;z-index:1}
+.b-icon{font-size:40px;z-index:1}
+.b-headline{font-size:18px;font-weight:900;text-align:center;line-height:1.2;z-index:1}
+.b-headline em{color:var(--amber);font-style:normal}
+.b-sub{font-size:11px;color:#888;text-align:center;z-index:1}
+.b-cta{background:var(--violet);color:#fff;border:none;padding:10px 28px;border-radius:30px;font-size:13px;font-weight:800;cursor:pointer;z-index:1;margin-top:4px}
+
+/* Email */
+.email-preview{background:#fff;border-radius:12px;overflow:hidden;width:500px;box-shadow:0 4px 24px rgba(0,0,0,.5)}
+.email-header{background:#0a0a14;padding:20px 24px;text-align:center}
+.email-logo{font-size:18px;font-weight:900;background:linear-gradient(90deg,var(--violet),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+.email-subject{font-size:12px;color:#666}
+.email-body{padding:24px}
+.email-hero{background:linear-gradient(135deg,#0a0a14,#1a0a2e);border-radius:8px;padding:28px;text-align:center;margin-bottom:16px;position:relative;overflow:hidden}
+.email-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,rgba(124,58,237,.25),transparent 65%)}
+.email-hero-icon{font-size:40px;margin-bottom:8px;z-index:1;position:relative}
+.email-hero h2{font-size:20px;font-weight:900;color:#fff;margin-bottom:6px;z-index:1;position:relative}
+.email-hero h2 em{color:var(--amber);font-style:normal}
+.email-hero p{font-size:13px;color:#aaa;z-index:1;position:relative}
+.email-text{font-size:14px;color:#333;line-height:1.6;margin-bottom:16px}
+.email-cta-wrap{text-align:center;margin-bottom:16px}
+.email-cta{background:var(--violet);color:#fff;border:none;padding:14px 36px;border-radius:30px;font-size:15px;font-weight:800;cursor:pointer}
+.email-footer{background:#f5f5f5;padding:12px 24px;text-align:center;font-size:11px;color:#999}
+
+/* Copy Table */
+.copy-table{width:100%;border-collapse:collapse;background:#111;border-radius:10px;overflow:hidden}
+.copy-table th{background:#1a1a2e;padding:10px 14px;text-align:left;font-size:12px;color:var(--amber);text-transform:uppercase;letter-spacing:.05em}
+.copy-table td{padding:10px 14px;font-size:13px;color:#ccc;border-bottom:1px solid #1a1a2e}
+.copy-table tr:last-child td{border-bottom:none}
+.copy-table tr:hover td{background:#161628}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700}
+.tag-google{background:rgba(66,133,244,.2);color:#4285F4}
+.tag-linkedin{background:rgba(10,102,194,.2);color:#0A66C2}
+.tag-meta{background:rgba(24,119,242,.2);color:#1877F2}
+.tag-tiktok{background:rgba(124,58,237,.2);color:#A78BFA}
+.tag-youtube{background:rgba(255,0,0,.2);color:#FF0000}
+.tag-email{background:rgba(245,158,11,.2);color:#F59E0B}
+
+/* Stats bar */
+.stats-bar{display:flex;gap:24px;background:#111;border-radius:10px;padding:16px 24px;margin-bottom:32px;flex-wrap:wrap}
+.stat-item{text-align:center}
+.stat-val{font-size:22px;font-weight:900;background:linear-gradient(90deg,var(--violet),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-lbl{font-size:11px;color:#555;margin-top:2px}
+</style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+
+<h1>🌅 Aurora Rays LLC — Ad Creative Suite</h1>
+<div class="subtitle">Complete multi-channel campaign · Google · LinkedIn · Meta · TikTok · YouTube · Display · Email</div>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-val">$15K</div><div class="stat-lbl">Monthly Budget</div></div>
+  <div class="stat-item"><div class="stat-val">6</div><div class="stat-lbl">Channels</div></div>
+  <div class="stat-item"><div class="stat-val">16</div><div class="stat-lbl">Creatives</div></div>
+  <div class="stat-item"><div class="stat-val">5</div><div class="stat-lbl">Audiences</div></div>
+  <div class="stat-item"><div class="stat-val">$45</div><div class="stat-lbl">Target CPL</div></div>
+  <div class="stat-item"><div class="stat-val">5×</div><div class="stat-lbl">Target ROAS</div></div>
+  <div class="stat-item"><div class="stat-val">20+</div><div class="stat-lbl">Clients/mo Target</div></div>
+  <div class="stat-item"><div class="stat-val">$997</div><div class="stat-lbl">Avg Contract Value</div></div>
+</div>
+
+<!-- Google Search -->
+<div class="section">
+  <div class="section-title">📡 Google Search Ads <span>SEARCH · $5,000/mo</span></div>
+  <div class="section-sub">Responsive Search Ads — High Intent Keywords · Target CPA: $120</div>
+  <div class="grid">
+    <div class="google-ad">
+      <div class="g-label">Ad · aurorarays.com/free-audit</div>
+      <div class="g-url">🔒 https://aurorarays.com › free-strategy-call</div>
+      <div class="g-title">Your Business. Fully Automated. — Aurora Rays LLC</div>
+      <div class="g-desc">Stop doing marketing manually. Aurora Rays automates your entire stack — email, ads, CRM, analytics. Set it once. Grow forever. From $497/mo. Book a free strategy call today.</div>
+      <div class="g-ext">
+        <a href="#">Free Strategy Call</a>
+        <a href="#">Pricing & Plans</a>
+        <a href="#">How It Works</a>
+        <a href="#">Case Studies</a>
+      </div>
+    </div>
+    <div class="google-ad">
+      <div class="g-label">Ad · aurorarays.com/done-for-you</div>
+      <div class="g-url">🔒 https://aurorarays.com › done-for-you-automation</div>
+      <div class="g-title">Done-For-You Marketing Automation — We Build It. You Profit.</div>
+      <div class="g-desc">Full setup in 14 days. We handle strategy, build, and optimization. Email sequences, ad automation, CRM pipelines — all connected. Average client sees 3× more leads in 90 days.</div>
+      <div class="g-ext">
+        <a href="#">See Our Process</a>
+        <a href="#">Client Results</a>
+        <a href="#">Get Started</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LinkedIn -->
+<div class="section">
+  <div class="section-title">💼 LinkedIn Ads <span>B2B · $3,500/mo</span></div>
+  <div class="section-sub">Lead Gen Forms targeting CEOs, CMOs, Founders, Agency Owners · 1–200 employees</div>
+  <div class="grid">
+    <div class="linkedin-ad">
+      <div class="li-header">
+        <div class="li-avatar">🌅</div>
+        <div>
+          <div class="li-name">Aurora Rays LLC</div>
+          <div class="li-meta">Promoted · Marketing Automation</div>
+        </div>
+      </div>
+      <div class="li-body">
+        <div class="li-headline">Your competitors are automating their marketing. Are you?</div>
+        <div class="li-image">
+          <div class="li-image-text">Your Business.<br/>Fully Automated.</div>
+          <div class="li-image-sub">🌅 Aurora Rays LLC</div>
+        </div>
+        <div class="li-text">Aurora Rays builds full-stack marketing automation systems for businesses ready to scale. Email, ads, CRM, analytics — all connected, all running 24/7. Our clients average 3× more leads in 90 days.</div>
+        <button class="li-cta">Get Free Strategy Session →</button>
+      </div>
+    </div>
+    <div class="linkedin-ad">
+      <div class="li-header">
+        <div class="li-avatar">🌅</div>
+        <div>
+          <div class="li-name">Aurora Rays LLC</div>
+          <div class="li-meta">Promoted · Marketing Automation</div>
+        </div>
+      </div>
+      <div class="li-body">
+        <div class="li-headline">Still doing marketing manually in 2025?</div>
+        <div class="li-image">
+          <div style="font-size:36px;z-index:1">🤖</div>
+          <div class="li-image-text" style="font-size:14px">Set it once.<br/><span style="color:var(--amber)">Grow forever.</span></div>
+        </div>
+        <div class="li-text">If you're manually sending emails, managing ad budgets, and following up with leads — you're leaving money on the table. Let Aurora Rays automate it all from $497/mo.</div>
+        <button class="li-cta">Book Free Audit →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Meta -->
+<div class="section">
+  <div class="section-title">📘 Meta Ads <span>FB + IG · $3,000/mo</span></div>
+  <div class="section-sub">Awareness + Retargeting · Feed + Stories + Reels</div>
+  <div class="grid">
+    <div class="meta-ad">
+      <div class="meta-header">
+        <div class="meta-avatar">🌅</div>
+        <div><div class="meta-name">Aurora Rays LLC</div><div class="meta-sponsored">Sponsored · 🌐</div></div>
+      </div>
+      <div class="meta-image">
+        <div style="font-size:44px;z-index:1">🌅</div>
+        <div class="meta-tagline">Your Business.<br/><em>Fully Automated.</em></div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-headline">Aurora Rays — Full-Stack Marketing Automation</div>
+        <div class="meta-desc">Email + Ads + CRM + Analytics — all connected, all running 24/7. From $497/mo. Average client sees 3× more leads in 90 days.</div>
+        <button class="meta-cta">🌅 Get Free Strategy Call</button>
+      </div>
+    </div>
+    <div class="meta-ad">
+      <div class="meta-header">
+        <div class="meta-avatar">🌅</div>
+        <div><div class="meta-name">Aurora Rays LLC</div><div class="meta-sponsored">Sponsored · Retargeting</div></div>
+      </div>
+      <div class="meta-image">
+        <div style="z-index:1;text-align:center;padding:0 20px">
+          <div style="font-size:13px;color:var(--amber);font-weight:700;margin-bottom:8px">STILL THINKING ABOUT IT?</div>
+          <div style="font-size:20px;font-weight:900;line-height:1.2">Your competitors<br/>aren't waiting. 🤖</div>
+          <div style="font-size:12px;color:#aaa;margin-top:8px">Let's automate your marketing today.</div>
+        </div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-headline">You visited Aurora Rays. Don't let leads slip away.</div>
+        <div class="meta-desc">Book a free strategy call — we'll show you exactly what to automate first. No commitment. Just clarity.</div>
+        <button class="meta-cta">Book Free Call — 15 Minutes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Stories + TikTok -->
+<div class="section">
+  <div class="section-title">📱 Stories & TikTok <span>VERTICAL · $1,500/mo</span></div>
+  <div class="section-sub">9:16 vertical format for IG Stories, Reels, and TikTok In-Feed</div>
+  <div class="grid">
+    <div>
+      <div style="font-size:12px;color:#555;margin-bottom:8px">Instagram Story</div>
+      <div class="story-ad">
+        <div class="story-bg"></div>
+        <div class="story-content">
+          <div class="story-logo">
+            <div class="story-logo-icon">🌅</div>
+            <span class="story-logo-text">Aurora Rays</span>
+          </div>
+          <div class="story-main">
+            <div class="story-icon">🤖</div>
+            <div class="story-headline">Your Business.<br/><em>Fully Automated.</em></div>
+            <div class="story-sub">Email · Ads · CRM · Analytics<br/>All connected. All 24/7.</div>
+            <button class="story-btn">Get Free Strategy Call →</button>
+          </div>
+          <div class="story-swipe">↑ Swipe Up to Book Free Call</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:12px;color:#555;margin-bottom:8px">TikTok In-Feed — POV Hook</div>
+      <div class="tiktok-ad">
+        <div class="tiktok-bg"></div>
+        <div class="tiktok-content">
+          <div class="tiktok-top">
+            <div class="tiktok-badge">AD</div>
+            <span style="font-size:18px;color:#aaa">✕</span>
+          </div>
+          <div class="tiktok-main">
+            <div class="tiktok-pov">POV: You just automated your entire marketing stack 🌅</div>
+            <div class="tiktok-icon">🤖</div>
+            <div class="tiktok-headline">Set it once.<br/>Grow forever.</div>
+            <div class="tiktok-sub">Aurora Rays — Full-stack marketing automation from $497/mo</div>
+            <button class="tiktok-btn">🌅 Get Free Strategy Call</button>
+          </div>
+        </div>
+        <div class="tiktok-right">
+          <div class="tiktok-action"><div class="tiktok-action-icon">❤️</div><div class="tiktok-action-count">18.4K</div></div>
+          <div class="tiktok-action"><div class="tiktok-action-icon">💬</div><div class="tiktok-action-count">2.1K</div></div>
+          <div class="tiktok-action"><div class="tiktok-action-icon">↗️</div><div class="tiktok-action-count">Share</div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:12px;color:#555;margin-bottom:8px">TikTok In-Feed — What If Hook</div>
+      <div class="tiktok-ad">
+        <div class="tiktok-bg"></div>
+        <div class="tiktok-content">
+          <div class="tiktok-top">
+            <div class="tiktok-badge">AD</div>
+            <span style="font-size:18px;color:#aaa">✕</span>
+          </div>
+          <div class="tiktok-main">
+            <div class="tiktok-pov">What if your marketing ran itself? 🤔</div>
+            <div class="tiktok-icon">🌅</div>
+            <div class="tiktok-headline">Stop doing<br/>marketing manually.</div>
+            <div class="tiktok-sub">Aurora Rays automates everything. Email, ads, CRM, analytics.</div>
+            <button class="tiktok-btn">See How It Works →</button>
+          </div>
+        </div>
+        <div class="tiktok-right">
+          <div class="tiktok-action"><div class="tiktok-action-icon">❤️</div><div class="tiktok-action-count">9.2K</div></div>
+          <div class="tiktok-action"><div class="tiktok-action-icon">💬</div><div class="tiktok-action-count">847</div></div>
+          <div class="tiktok-action"><div class="tiktok-action-icon">↗️</div><div class="tiktok-action-count">Share</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- YouTube -->
+<div class="section">
+  <div class="section-title">▶️ YouTube Pre-Roll <span>VIDEO · $1,200/mo</span></div>
+  <div class="section-sub">15s non-skippable + 30s skippable · Brand authority targeting</div>
+  <div class="grid">
+    <div class="youtube-ad">
+      <div class="yt-video">
+        <div class="yt-play">▶</div>
+        <div class="yt-title">Aurora Rays — Your Business. Fully Automated. | Free Strategy Call</div>
+        <div class="yt-skip">Skip Ad in 5s →</div>
+      </div>
+      <div class="yt-body">
+        <div class="yt-channel">
+          <div class="yt-avatar">🌅</div>
+          <div><div class="yt-name">Aurora Rays LLC</div><div class="yt-sub">Marketing Automation · 12.4K subscribers</div></div>
+        </div>
+        <div style="font-size:13px;color:#aaa;line-height:1.5">Most businesses lose leads every day because their marketing isn't automated. Aurora Rays fixes that — full-stack automation from $497/mo.</div>
+        <button class="yt-cta">🌅 Book Free Strategy Call</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Display Banners -->
+<div class="section">
+  <div class="section-title">🖥️ Display Banners <span>NATIVE + DISPLAY · $800/mo</span></div>
+  <div class="section-sub">Standard IAB sizes for programmatic retargeting</div>
+  <div style="margin-bottom:16px">
+    <div style="font-size:12px;color:#555;margin-bottom:8px">728×90 Leaderboard</div>
+    <div class="banner-728">
+      <div class="banner-logo">🌅 Aurora Rays LLC</div>
+      <div class="banner-divider"></div>
+      <div class="banner-text">
+        <h3>Your Business. Fully Automated.</h3>
+        <p>Email + Ads + CRM + Analytics · All connected · All 24/7 · From $497/mo</p>
+      </div>
+      <button class="banner-cta">Get Free Strategy Call →</button>
+    </div>
+  </div>
+  <div class="grid">
+    <div>
+      <div style="font-size:12px;color:#555;margin-bottom:8px">300×250 Medium Rectangle</div>
+      <div class="banner-300">
+        <div class="b-icon">🌅</div>
+        <div class="b-logo">Aurora Rays LLC</div>
+        <div class="b-headline">Your Business.<br/><em>Fully Automated.</em></div>
+        <div class="b-sub">Email · Ads · CRM · Analytics · 24/7</div>
+        <button class="b-cta">Free Strategy Call</button>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:12px;color:#555;margin-bottom:8px">300×250 — Retargeting Variant</div>
+      <div class="banner-300">
+        <div style="font-size:36px;z-index:1">🤖</div>
+        <div class="b-logo">Aurora Rays LLC</div>
+        <div class="b-headline">Set it once.<br/><em>Grow forever.</em></div>
+        <div class="b-sub">Stop doing marketing manually</div>
+        <button class="b-cta">Book Free Audit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Email -->
+<div class="section">
+  <div class="section-title">📧 Email Creatives <span>NURTURE SEQUENCES</span></div>
+  <div class="section-sub">Lead magnet sequence — Email 1 (Immediate send on form submit)</div>
+  <div class="email-preview">
+    <div class="email-header">
+      <div class="email-logo">🌅 Aurora Rays LLC</div>
+      <div class="email-subject">Subject: Your Free Marketing Automation Audit is Ready 🌅</div>
+    </div>
+    <div class="email-body">
+      <div class="email-hero">
+        <div class="email-hero-icon">🌅</div>
+        <h2>Welcome to <em>Aurora Rays</em></h2>
+        <p>Your automation journey starts right now.</p>
+      </div>
+      <div class="email-text">
+        You just took the first step toward a fully automated marketing system. Here's what happens next:<br/><br/>
+        <strong>Your Free Audit Includes:</strong><br/>
+        ✅ Full review of your current marketing stack<br/>
+        ✅ Identification of your top 3 automation opportunities<br/>
+        ✅ Custom roadmap to 3× your leads in 90 days<br/>
+        ✅ Pricing recommendation for your business size<br/><br/>
+        Most businesses are losing 40–60% of their leads to slow follow-up and manual processes. Aurora Rays fixes that — permanently.
+      </div>
+      <div class="email-cta-wrap">
+        <button class="email-cta">🌅 Book Your Free Strategy Call</button>
+      </div>
+      <div style="font-size:12px;color:#888;text-align:center">Takes 15 minutes · No commitment · 100% free</div>
+    </div>
+    <div class="email-footer">Aurora Rays LLC · Full-Stack Marketing Automation · Unsubscribe · Privacy Policy</div>
+  </div>
+</div>
+
+<!-- Copy Bank -->
+<div class="section">
+  <div class="section-title">📋 Master Copy Bank <span>ALL CHANNELS · 16 VARIANTS</span></div>
+  <div class="section-sub">All headlines, descriptions, hooks, and CTAs organized by channel</div>
+  <table class="copy-table">
+    <thead><tr><th>Channel</th><th>Headline</th><th>CTA</th><th>Audience</th><th>Hook Type</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag tag-google">Google</span></td><td>Your Business. Fully Automated.</td><td>Book Free Call</td><td>All business owners</td><td>Brand promise</td></tr>
+      <tr><td><span class="tag tag-google">Google</span></td><td>Done-For-You Marketing Automation</td><td>Get Started</td><td>Overwhelmed owners</td><td>DFY offer</td></tr>
+      <tr><td><span class="tag tag-google">Google</span></td><td>Stop Losing Leads to Manual Follow-Up</td><td>Free Audit</td><td>High-intent</td><td>Pain point</td></tr>
+      <tr><td><span class="tag tag-google">Google</span></td><td>3× More Leads in 90 Days — Guaranteed</td><td>See How</td><td>Results-focused</td><td>Social proof</td></tr>
+      <tr><td><span class="tag tag-linkedin">LinkedIn</span></td><td>Your competitors are automating. Are you?</td><td>Free Strategy Session</td><td>CEOs, Founders</td><td>Competitive FOMO</td></tr>
+      <tr><td><span class="tag tag-linkedin">LinkedIn</span></td><td>Still doing marketing manually in 2025?</td><td>Book Free Audit</td><td>Agency owners</td><td>Pain point</td></tr>
+      <tr><td><span class="tag tag-linkedin">LinkedIn</span></td><td>Add $10K/mo to your agency without hiring</td><td>See How</td><td>Agencies</td><td>Revenue hook</td></tr>
+      <tr><td><span class="tag tag-meta">Meta</span></td><td>Your Business. Fully Automated. 🌅</td><td>Get Free Strategy Call</td><td>Business owners</td><td>Brand promise</td></tr>
+      <tr><td><span class="tag tag-meta">Meta</span></td><td>Still thinking about automating? 🤖</td><td>Book Free Call</td><td>Retargeting</td><td>Retargeting nudge</td></tr>
+      <tr><td><span class="tag tag-meta">Meta</span></td><td>What if your marketing ran itself?</td><td>See How It Works</td><td>Solopreneurs</td><td>Curiosity</td></tr>
+      <tr><td><span class="tag tag-tiktok">TikTok</span></td><td>POV: You just automated your entire marketing stack 🌅</td><td>Get Free Strategy Call</td><td>Solopreneurs</td><td>POV viral hook</td></tr>
+      <tr><td><span class="tag tag-tiktok">TikTok</span></td><td>What if your marketing ran itself? 🤔</td><td>See How It Works</td><td>All</td><td>What if hook</td></tr>
+      <tr><td><span class="tag tag-youtube">YouTube</span></td><td>Most businesses lose leads every day — here's why</td><td>Book Free Strategy Call</td><td>All</td><td>Problem-agitate</td></tr>
+      <tr><td><span class="tag tag-email">Email</span></td><td>Your Free Marketing Automation Audit is Ready 🌅</td><td>Book Your Free Strategy Call</td><td>New leads</td><td>Welcome</td></tr>
+      <tr><td><span class="tag tag-email">Email</span></td><td>Your competitors are already doing this...</td><td>See What They're Doing</td><td>Day 9 nurture</td><td>FOMO</td></tr>
+      <tr><td><span class="tag tag-email">Email</span></td><td>Upgrade offer — 20% off Growth plan this week only</td><td>Upgrade Now</td><td>Starter clients</td><td>Upsell</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DiscreetFlame — Ad Creatives</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#111;font-family:'Inter',sans-serif;color:#fff;padding:40px 24px}
+h1{font-size:28px;font-weight:900;color:#FF1B6D;margin-bottom:6px}
+.subtitle{color:#888;font-size:14px;margin-bottom:40px}
+.section{margin-bottom:56px}
+.section-title{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.section-title span{background:#FF1B6D;color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700}
+.section-sub{font-size:13px;color:#666;margin-bottom:20px}
+.grid{display:flex;flex-wrap:wrap;gap:20px}
+
+/* ── Google Search Ad ── */
+.google-ad{background:#fff;border-radius:12px;padding:20px 24px;width:480px;box-shadow:0 4px 24px rgba(0,0,0,.4)}
+.google-ad .g-label{font-size:11px;color:#006621;font-weight:600;margin-bottom:4px}
+.google-ad .g-url{font-size:13px;color:#006621;margin-bottom:6px}
+.google-ad .g-title{font-size:20px;color:#1a0dab;font-weight:600;margin-bottom:6px;line-height:1.3;cursor:pointer}
+.google-ad .g-title:hover{text-decoration:underline}
+.google-ad .g-desc{font-size:14px;color:#545454;line-height:1.5}
+.google-ad .g-ext{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap}
+.google-ad .g-ext a{font-size:13px;color:#1a0dab;text-decoration:none}
+.google-ad .g-ext a:hover{text-decoration:underline}
+
+/* ── Meta Feed Ad ── */
+.meta-ad{background:#1c1e21;border-radius:12px;overflow:hidden;width:380px;box-shadow:0 4px 24px rgba(0,0,0,.5)}
+.meta-header{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.meta-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#FF1B6D,#ff6b35);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.meta-name{font-size:14px;font-weight:700;color:#e4e6eb}
+.meta-sponsored{font-size:11px;color:#b0b3b8}
+.meta-image{width:100%;height:220px;background:linear-gradient(135deg,#0a0a0a 0%,#1a0010 50%,#0a0a0a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;position:relative;overflow:hidden}
+.meta-image::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,rgba(255,27,109,.25),transparent 70%)}
+.meta-flame{font-size:56px;filter:drop-shadow(0 0 20px #FF1B6D)}
+.meta-tagline{font-size:22px;font-weight:900;text-align:center;line-height:1.2;z-index:1}
+.meta-tagline em{color:#FF1B6D;font-style:normal}
+.meta-body{padding:12px 14px}
+.meta-headline{font-size:15px;font-weight:700;color:#e4e6eb;margin-bottom:4px}
+.meta-desc{font-size:13px;color:#b0b3b8;margin-bottom:12px}
+.meta-cta{background:#FF1B6D;color:#fff;border:none;padding:10px 20px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;width:100%}
+
+/* ── Instagram Story ── */
+.story-ad{width:220px;height:390px;background:#0a0a0a;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 4px 24px rgba(0,0,0,.6)}
+.story-bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 70%,rgba(255,27,109,.35),transparent 65%)}
+.story-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;padding:20px 16px}
+.story-logo{display:flex;align-items:center;gap:6px;margin-bottom:auto}
+.story-logo-text{font-size:13px;font-weight:800;color:#FF1B6D}
+.story-main{text-align:center;margin:auto 0}
+.story-flame{font-size:48px;margin-bottom:12px}
+.story-headline{font-size:20px;font-weight:900;line-height:1.2;margin-bottom:8px}
+.story-headline em{color:#FF1B6D;font-style:normal}
+.story-sub{font-size:11px;color:#aaa;margin-bottom:16px}
+.story-btn{background:#FF1B6D;color:#fff;border:none;padding:10px 20px;border-radius:30px;font-size:13px;font-weight:800;cursor:pointer;width:100%}
+.story-swipe{font-size:10px;color:#888;text-align:center;margin-top:8px}
+
+/* ── TikTok Ad ── */
+.tiktok-ad{width:220px;height:390px;background:#000;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 4px 24px rgba(0,0,0,.6)}
+.tiktok-bg{position:absolute;inset:0;background:linear-gradient(180deg,#0a0a0a 0%,#1a0010 40%,#0a0a0a 100%)}
+.tiktok-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;padding:16px}
+.tiktok-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:auto}
+.tiktok-badge{background:rgba(255,27,109,.2);border:1px solid #FF1B6D;color:#FF1B6D;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px}
+.tiktok-main{text-align:center;margin:auto 0;padding:20px 0}
+.tiktok-pov{font-size:13px;color:#FF1B6D;font-weight:700;margin-bottom:8px}
+.tiktok-headline{font-size:19px;font-weight:900;line-height:1.2;margin-bottom:12px}
+.tiktok-flame{font-size:40px;margin-bottom:8px}
+.tiktok-sub{font-size:11px;color:#aaa;margin-bottom:14px}
+.tiktok-btn{background:#FF1B6D;color:#fff;border:none;padding:9px 16px;border-radius:6px;font-size:12px;font-weight:800;cursor:pointer;width:100%}
+.tiktok-right{position:absolute;right:10px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:16px;align-items:center}
+.tiktok-action{display:flex;flex-direction:column;align-items:center;gap:2px}
+.tiktok-action-icon{font-size:22px}
+.tiktok-action-count{font-size:10px;color:#aaa}
+
+/* ── Native Ad ── */
+.native-ad{background:#1a1a1a;border-radius:10px;overflow:hidden;width:280px;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.native-img{width:100%;height:160px;background:linear-gradient(135deg,#0a0a0a,#2a0015);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;position:relative}
+.native-img::after{content:'SPONSORED';position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#aaa;font-size:9px;padding:2px 6px;border-radius:3px}
+.native-img-flame{font-size:40px}
+.native-img-text{font-size:13px;font-weight:700;color:#FF1B6D;text-align:center;padding:0 12px}
+.native-body{padding:12px}
+.native-headline{font-size:14px;font-weight:700;color:#e0e0e0;margin-bottom:4px;line-height:1.3}
+.native-source{font-size:11px;color:#666}
+
+/* ── Display Banner ── */
+.banner-728{width:100%;max-width:728px;height:90px;background:linear-gradient(90deg,#0a0a0a 0%,#1a0010 50%,#0a0a0a 100%);border-radius:8px;display:flex;align-items:center;padding:0 24px;gap:20px;position:relative;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.5)}
+.banner-728::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:200px;height:200px;background:radial-gradient(circle,rgba(255,27,109,.2),transparent 70%)}
+.banner-logo{font-size:20px;font-weight:900;color:#FF1B6D;white-space:nowrap;z-index:1}
+.banner-divider{width:1px;height:50px;background:rgba(255,27,109,.3)}
+.banner-text{z-index:1;flex:1}
+.banner-text h3{font-size:16px;font-weight:800;color:#fff;margin-bottom:2px}
+.banner-text p{font-size:12px;color:#aaa}
+.banner-cta{background:#FF1B6D;color:#fff;border:none;padding:10px 20px;border-radius:6px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;z-index:1}
+
+.banner-300{width:300px;height:250px;background:linear-gradient(180deg,#0a0a0a 0%,#1a0010 60%,#0a0a0a 100%);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;position:relative;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.5)}
+.banner-300::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,rgba(255,27,109,.2),transparent 65%)}
+.banner-300 .b-flame{font-size:44px;z-index:1}
+.banner-300 .b-logo{font-size:16px;font-weight:900;color:#FF1B6D;z-index:1}
+.banner-300 .b-headline{font-size:18px;font-weight:900;text-align:center;line-height:1.2;z-index:1}
+.banner-300 .b-headline em{color:#FF1B6D;font-style:normal}
+.banner-300 .b-sub{font-size:11px;color:#aaa;text-align:center;z-index:1}
+.banner-300 .b-cta{background:#FF1B6D;color:#fff;border:none;padding:10px 28px;border-radius:30px;font-size:13px;font-weight:800;cursor:pointer;z-index:1;margin-top:4px}
+
+/* ── Reddit Ad ── */
+.reddit-ad{background:#1a1a1b;border-radius:10px;padding:16px;width:480px;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.reddit-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.reddit-avatar{width:32px;height:32px;border-radius:50%;background:#FF1B6D;display:flex;align-items:center;justify-content:center;font-size:14px}
+.reddit-meta{font-size:12px;color:#818384}
+.reddit-meta strong{color:#d7dadc}
+.reddit-title{font-size:16px;font-weight:700;color:#d7dadc;margin-bottom:8px;line-height:1.3}
+.reddit-body{font-size:13px;color:#818384;margin-bottom:12px;line-height:1.5}
+.reddit-img{width:100%;height:140px;background:linear-gradient(135deg,#0a0a0a,#2a0015);border-radius:8px;display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:12px}
+.reddit-cta{background:#FF1B6D;color:#fff;border:none;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer}
+
+/* ── Email Preview ── */
+.email-preview{background:#fff;border-radius:12px;overflow:hidden;width:480px;box-shadow:0 4px 24px rgba(0,0,0,.4)}
+.email-header{background:#0a0a0a;padding:20px 24px;text-align:center}
+.email-logo{font-size:20px;font-weight:900;color:#FF1B6D;margin-bottom:4px}
+.email-subject{font-size:13px;color:#888}
+.email-body{padding:24px}
+.email-hero{background:linear-gradient(135deg,#0a0a0a,#1a0010);border-radius:8px;padding:28px;text-align:center;margin-bottom:16px}
+.email-hero-flame{font-size:40px;margin-bottom:8px}
+.email-hero h2{font-size:20px;font-weight:900;color:#fff;margin-bottom:6px}
+.email-hero h2 em{color:#FF1B6D;font-style:normal}
+.email-hero p{font-size:13px;color:#aaa}
+.email-text{font-size:14px;color:#333;line-height:1.6;margin-bottom:16px}
+.email-cta-wrap{text-align:center;margin-bottom:16px}
+.email-cta{background:#FF1B6D;color:#fff;border:none;padding:14px 36px;border-radius:30px;font-size:15px;font-weight:800;cursor:pointer}
+.email-footer{background:#f5f5f5;padding:12px 24px;text-align:center;font-size:11px;color:#999}
+
+/* ── Copy Table ── */
+.copy-table{width:100%;border-collapse:collapse;background:#1a1a1a;border-radius:10px;overflow:hidden}
+.copy-table th{background:#2a2a2a;padding:10px 14px;text-align:left;font-size:12px;color:#FF1B6D;text-transform:uppercase;letter-spacing:.05em}
+.copy-table td{padding:10px 14px;font-size:13px;color:#ccc;border-bottom:1px solid #2a2a2a}
+.copy-table tr:last-child td{border-bottom:none}
+.copy-table tr:hover td{background:#222}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700}
+.tag-google{background:rgba(66,133,244,.2);color:#4285F4}
+.tag-meta{background:rgba(24,119,242,.2);color:#1877F2}
+.tag-tiktok{background:rgba(255,0,80,.2);color:#FF0050}
+.tag-native{background:rgba(245,158,11,.2);color:#F59E0B}
+.tag-email{background:rgba(34,197,94,.2);color:#22C55E}
+</style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+
+<h1>🔥 DiscreetFlame — Ad Creative Suite</h1>
+<div class="subtitle">Complete multi-channel ad creatives · Google · Meta · TikTok · Native · Display · Email</div>
+
+<!-- ── Google Search ── -->
+<div class="section">
+  <div class="section-title">📡 Google Search Ads <span>SEARCH</span></div>
+  <div class="section-sub">Responsive Search Ads — High Intent Keywords</div>
+  <div class="grid">
+    <div class="google-ad">
+      <div class="g-label">Ad · discreetflame.com/find-your-match</div>
+      <div class="g-url">🔒 https://discreetflame.com › find-your-match</div>
+      <div class="g-title">Life Is Short. Have an Affair. — 100% Free & Anonymous</div>
+      <div class="g-desc">The #1 discreet dating site for married & attached people. 100% free, anonymous billing, zero drama. Join 2M+ members. Find your match now.</div>
+      <div class="g-ext">
+        <a href="#">Find Your Affair</a>
+        <a href="#">How It Works</a>
+        <a href="#">100% Anonymous</a>
+        <a href="#">Free Signup</a>
+      </div>
+    </div>
+    <div class="google-ad">
+      <div class="g-label">Ad · discreetflame.com/join-free</div>
+      <div class="g-url">🔒 https://discreetflame.com › join-free</div>
+      <div class="g-title">Better Than Ashley Madison — More Discreet. More Matches.</div>
+      <div class="g-desc">DiscreetFlame offers everything you need — free signup, discreet billing, and real matches. No subscriptions. No hidden fees. Join free today.</div>
+      <div class="g-ext">
+        <a href="#">Start Free</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Discreet Billing</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Meta Feed ── -->
+<div class="section">
+  <div class="section-title">📘 Meta Feed Ads <span>FACEBOOK + INSTAGRAM</span></div>
+  <div class="section-sub">Static image ads for FB Feed and IG Feed placements</div>
+  <div class="grid">
+    <div class="meta-ad">
+      <div class="meta-header">
+        <div class="meta-avatar">🔥</div>
+        <div>
+          <div class="meta-name">DiscreetFlame</div>
+          <div class="meta-sponsored">Sponsored · 🌐</div>
+        </div>
+      </div>
+      <div class="meta-image">
+        <div class="meta-flame">🔥</div>
+        <div class="meta-tagline">Life is Short.<br/><em>Have an Affair.</em></div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-headline">DiscreetFlame — The #1 Discreet Dating Site</div>
+        <div class="meta-desc">100% Free · Anonymous Billing · No Drama. Join 2M+ members seeking passion outside their relationship.</div>
+        <button class="meta-cta">🔥 Find Your Affair</button>
+      </div>
+    </div>
+    <div class="meta-ad">
+      <div class="meta-header">
+        <div class="meta-avatar">🔥</div>
+        <div>
+          <div class="meta-name">DiscreetFlame</div>
+          <div class="meta-sponsored">Sponsored · 🌐</div>
+        </div>
+      </div>
+      <div class="meta-image">
+        <div style="z-index:1;text-align:center;padding:0 20px">
+          <div style="font-size:13px;color:#FF1B6D;font-weight:700;margin-bottom:8px">RETARGETING</div>
+          <div style="font-size:22px;font-weight:900;line-height:1.2">Still thinking<br/>about it? 👀</div>
+          <div style="font-size:13px;color:#aaa;margin-top:8px">Your match is waiting.</div>
+        </div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-headline">Don't let life pass you by.</div>
+        <div class="meta-desc">You visited DiscreetFlame. Your matches are still there. 100% free, completely anonymous. Sign up takes 60 seconds.</div>
+        <button class="meta-cta">Sign Up Free — It's Anonymous</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Stories + TikTok ── -->
+<div class="section">
+  <div class="section-title">📱 Stories & TikTok Ads <span>VERTICAL VIDEO</span></div>
+  <div class="section-sub">9:16 vertical format for IG Stories, Reels, and TikTok In-Feed</div>
+  <div class="grid">
+    <div>
+      <div style="font-size:12px;color:#666;margin-bottom:8px">Instagram Story</div>
+      <div class="story-ad">
+        <div class="story-bg"></div>
+        <div class="story-content">
+          <div class="story-logo">
+            <span style="font-size:16px">🔥</span>
+            <span class="story-logo-text">DiscreetFlame</span>
+          </div>
+          <div class="story-main">
+            <div class="story-flame">🔥</div>
+            <div class="story-headline">Life is Short.<br/><em>Have an Affair.</em></div>
+            <div class="story-sub">100% Free · Discreet Billing · Anonymous</div>
+            <button class="story-btn">Find Your Affair →</button>
+          </div>
+          <div class="story-swipe">↑ Swipe Up to Join Free</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:12px;color:#666;margin-bottom:8px">TikTok In-Feed</div>
+      <div class="tiktok-ad">
+        <div class="tiktok-bg"></div>
+        <div class="tiktok-content">
+          <div class="tiktok-top">
+            <div class="tiktok-badge">AD</div>
+            <span style="font-size:18px">✕</span>
+          </div>
+          <div class="tiktok-main">
+            <div class="tiktok-pov">POV: You just found DiscreetFlame 👀</div>
+            <div class="tiktok-flame">🔥</div>
+            <div class="tiktok-headline">Life is Short.<br/>Have an Affair.</div>
+            <div class="tiktok-sub">The app they don't want you to know about.<br/>100% Free · Anonymous</div>
+            <button class="tiktok-btn">🔥 Find Your Affair</button>
+          </div>
+        </div>
+        <div class="tiktok-right">
+          <div class="tiktok-action"><div class="tiktok-action-icon">❤️</div><div class="tiktok-action-count">24.2K</div></div>
+          <div class="tiktok-action"><div class="tiktok-action-icon">💬</div><div class="tiktok-action-count">1.8K</div></div>
+          <div class="tiktok-action"><div class="tiktok-action-icon">↗️</div><div class="tiktok-action-count">Share</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Display Banners ── -->
+<div class="section">
+  <div class="section-title">🖥️ Display Banners <span>NATIVE + DISPLAY</span></div>
+  <div class="section-sub">Standard IAB banner sizes for programmatic and native placements</div>
+  <div style="margin-bottom:16px">
+    <div style="font-size:12px;color:#666;margin-bottom:8px">728×90 Leaderboard</div>
+    <div class="banner-728">
+      <div class="banner-logo">🔥 DiscreetFlame</div>
+      <div class="banner-divider"></div>
+      <div class="banner-text">
+        <h3>Life is Short. Have an Affair.</h3>
+        <p>100% Free · Discreet Billing · Private & Anonymous · 2M+ Members</p>
+      </div>
+      <button class="banner-cta">Find Your Affair →</button>
+    </div>
+  </div>
+  <div class="grid">
+    <div>
+      <div style="font-size:12px;color:#666;margin-bottom:8px">300×250 Medium Rectangle</div>
+      <div class="banner-300">
+        <div class="b-flame">🔥</div>
+        <div class="b-logo">DiscreetFlame</div>
+        <div class="b-headline">Life is Short.<br/><em>Have an Affair.</em></div>
+        <div class="b-sub">100% Free · Anonymous · No Drama</div>
+        <button class="b-cta">Find Your Affair</button>
+      </div>
+    </div>
+    <div class="native-ad">
+      <div class="native-img">
+        <div class="native-img-flame">🔥</div>
+        <div class="native-img-text">DiscreetFlame</div>
+      </div>
+      <div class="native-body">
+        <div class="native-headline">The Dating Site Married People Are Secretly Using</div>
+        <div class="native-source">discreetflame.com · Sponsored</div>
+      </div>
+    </div>
+    <div class="native-ad">
+      <div class="native-img">
+        <div style="font-size:32px">👀</div>
+        <div class="native-img-text">Why Millions of Attached Adults Are Joining This App</div>
+      </div>
+      <div class="native-body">
+        <div class="native-headline">Why Millions of Attached Adults Are Joining This App</div>
+        <div class="native-source">discreetflame.com · Sponsored</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Reddit ── -->
+<div class="section">
+  <div class="section-title">💬 Reddit Promoted Post <span>REDDIT</span></div>
+  <div class="section-sub">Promoted post targeting r/dating, r/relationships, r/lonely</div>
+  <div class="reddit-ad">
+    <div class="reddit-header">
+      <div class="reddit-avatar">🔥</div>
+      <div class="reddit-meta"><strong>u/DiscreetFlame_Official</strong> · Promoted · r/dating</div>
+    </div>
+    <div class="reddit-title">DiscreetFlame — The Discreet Dating App That Actually Works (100% Free, No Subscriptions)</div>
+    <div class="reddit-img">
+      <span style="font-size:40px">🔥</span>
+      <span style="font-size:16px;font-weight:800;color:#FF1B6D">DiscreetFlame</span>
+    </div>
+    <div class="reddit-body">No subscriptions. No hidden fees. 100% anonymous billing. Join free and find your match today. Life is short — don't spend it wondering "what if."</div>
+    <button class="reddit-cta">🔥 Find Your Affair</button>
+  </div>
+</div>
+
+<!-- ── Email ── -->
+<div class="section">
+  <div class="section-title">📧 Email Creatives <span>EMAIL NURTURE</span></div>
+  <div class="section-sub">Welcome sequence — Email 1 (Immediate send on signup)</div>
+  <div class="email-preview">
+    <div class="email-header">
+      <div class="email-logo">🔥 DiscreetFlame</div>
+      <div class="email-subject">Subject: Welcome to DiscreetFlame 🔥 — Your journey starts now</div>
+    </div>
+    <div class="email-body">
+      <div class="email-hero">
+        <div class="email-hero-flame">🔥</div>
+        <h2>Welcome to <em>DiscreetFlame</em></h2>
+        <p>Your discreet journey starts right now.</p>
+      </div>
+      <div class="email-text">
+        You've just joined 2 million+ people who decided life is too short to settle. DiscreetFlame is your private, anonymous space to find the passion and excitement you deserve — no strings, no drama, no judgment.<br/><br/>
+        <strong>Here's what to do next:</strong><br/>
+        ✅ Complete your profile (takes 2 minutes)<br/>
+        ✅ Browse matches in your area<br/>
+        ✅ Send your first message — it's free<br/><br/>
+        Your privacy is our #1 priority. Discreet billing, encrypted profiles, and zero trace.
+      </div>
+      <div class="email-cta-wrap">
+        <button class="email-cta">🔥 Find Your Affair Now</button>
+      </div>
+    </div>
+    <div class="email-footer">DiscreetFlame · Discreet Billing · Private & Anonymous · Unsubscribe</div>
+  </div>
+</div>
+
+<!-- ── Copy Table ── -->
+<div class="section">
+  <div class="section-title">📋 Master Copy Bank <span>ALL CHANNELS</span></div>
+  <div class="section-sub">All headlines, descriptions, and CTAs organized by channel</div>
+  <table class="copy-table">
+    <thead><tr><th>Channel</th><th>Headline</th><th>CTA</th><th>Hook</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag tag-google">Google</span></td><td>Life Is Short. Have an Affair.</td><td>Find Your Affair</td><td>High intent — affair dating</td></tr>
+      <tr><td><span class="tag tag-google">Google</span></td><td>#1 Discreet Dating Site — 100% Free</td><td>Join Free Now</td><td>Brand awareness</td></tr>
+      <tr><td><span class="tag tag-google">Google</span></td><td>Better Than Ashley Madison</td><td>Try Free Today</td><td>Competitor conquest</td></tr>
+      <tr><td><span class="tag tag-meta">Meta</span></td><td>Life is Short. Have an Affair. 🔥</td><td>Find Your Affair</td><td>Restless married</td></tr>
+      <tr><td><span class="tag tag-meta">Meta</span></td><td>Still thinking about it? 👀</td><td>Sign Up Free</td><td>Retargeting</td></tr>
+      <tr><td><span class="tag tag-meta">Meta</span></td><td>No strings. No drama. Just passion.</td><td>Join Free</td><td>Curious attached</td></tr>
+      <tr><td><span class="tag tag-tiktok">TikTok</span></td><td>POV: You just found DiscreetFlame 👀🔥</td><td>Find Your Affair →</td><td>Viral hook</td></tr>
+      <tr><td><span class="tag tag-tiktok">TikTok</span></td><td>The app they don't want you to know about</td><td>Join Free</td><td>Curiosity gap</td></tr>
+      <tr><td><span class="tag tag-native">Native</span></td><td>The Dating Site Married People Are Secretly Using</td><td>Learn More</td><td>Curiosity</td></tr>
+      <tr><td><span class="tag tag-native">Native</span></td><td>Why Millions of Attached Adults Are Joining This App</td><td>See Why</td><td>Social proof</td></tr>
+      <tr><td><span class="tag tag-email">Email</span></td><td>Welcome to DiscreetFlame 🔥 — Your journey starts now</td><td>Find Your Affair Now</td><td>Welcome</td></tr>
+      <tr><td><span class="tag tag-email">Email</span></td><td>Life is short — your matches are waiting 🔥</td><td>Come Back</td><td>Re-engagement</td></tr>
+      <tr><td><span class="tag tag-email">Email</span></td><td>Unlock unlimited messaging — upgrade to Premium</td><td>Go Premium</td><td>Upsell</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
