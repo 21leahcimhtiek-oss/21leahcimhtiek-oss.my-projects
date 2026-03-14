@@ -1,976 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AutoStack — Aurora Rays LLC Campaign Engine</title>
-<link rel="stylesheet" href="styles.css"/>
-<style>
-:root{
-  --brand:#7C3AED;--brand-dark:#6D28D9;--brand-light:rgba(124,58,237,.12);
-  --amber:#F59E0B;--amber-light:rgba(245,158,11,.12);
-  --brand-glow:0 0 24px rgba(124,58,237,.35);
-}
-.btn-brand{background:var(--brand);color:white;}
-.btn-brand:hover{background:var(--brand-dark);transform:translateY(-1px);box-shadow:var(--brand-glow);}
-.nav-item.active{background:var(--brand-light);color:var(--brand);}
-.nav-item.active::before{background:var(--brand);}
-.logo-icon{background:linear-gradient(135deg,var(--brand),var(--amber))!important;}
-.stat-card.brand-accent::before{background:linear-gradient(90deg,var(--brand),var(--amber))!important;}
-
-#live-ticker{background:var(--brand-light);border-bottom:1px solid rgba(124,58,237,.2);padding:6px 24px;font-size:12px;color:var(--brand);display:flex;align-items:center;gap:8px;overflow:hidden;}
-.ticker-inner{display:flex;gap:40px;animation:ticker 35s linear infinite;white-space:nowrap;}
-@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-.alert-bar{background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.3);border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;color:#A78BFA;display:flex;align-items:center;gap:8px;margin-bottom:16px;}
-.alert-bar.amber{background:var(--amber-light);border-color:rgba(245,158,11,.3);color:var(--amber);}
-
-.ch-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;}
-.ch-google{background:rgba(66,133,244,.15);color:#4285F4;}
-.ch-linkedin{background:rgba(10,102,194,.15);color:#0A66C2;}
-.ch-facebook{background:rgba(24,119,242,.15);color:#1877F2;}
-.ch-tiktok{background:rgba(124,58,237,.15);color:#A78BFA;}
-.ch-youtube{background:rgba(255,0,0,.15);color:#FF4444;}
-.ch-native{background:rgba(245,158,11,.15);color:#F59E0B;}
-.ch-email{background:rgba(34,197,94,.15);color:#22C55E;}
-
-.creative-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:all .15s;}
-.creative-card:hover{border-color:var(--brand);transform:translateY(-2px);box-shadow:var(--brand-glow);}
-.creative-thumb{height:110px;background:linear-gradient(135deg,#0a0a14,#1a0a2e);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;position:relative;overflow:hidden;}
-.creative-thumb::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 70%,rgba(124,58,237,.25),transparent 65%);}
-.creative-thumb-icon{font-size:32px;z-index:1;}
-.creative-thumb-text{font-size:12px;font-weight:800;color:var(--amber);z-index:1;text-align:center;padding:0 10px;}
-.creative-body{padding:12px;}
-.creative-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;}
-
-.tier-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:16px;transition:all .15s;cursor:pointer;}
-.tier-card:hover{border-color:var(--brand);}
-.tier-price{font-size:28px;font-weight:900;color:var(--brand);}
-.tier-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;}
-.tier-feature{font-size:12px;color:var(--text2);padding:3px 0;display:flex;align-items:center;gap:6px;}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoStack — Marketing Engine</title>
+  <link rel="stylesheet" href="styles.css" />
 <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
-<div id="app">
 
-<!-- SIDEBAR -->
-<nav id="sidebar">
-  <div class="sidebar-logo">
-    <div class="logo-mark">
-      <div class="logo-icon">🌅</div>
+  <!-- ═══════════════════════════════════════════════
+       SIDEBAR
+  ═══════════════════════════════════════════════ -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
       <div>
-        <div class="logo-text">AutoStack</div>
-        <div class="logo-sub">Aurora Rays LLC</div>
+        <div class="logo-name">AutoStack</div>
+        <div class="logo-sub"><!-- Business Name --></div>
       </div>
     </div>
-  </div>
 
-  <div class="sidebar-section">
-    <div class="sidebar-section-label">Overview</div>
-    <div class="nav-item active" onclick="navigate('dashboard')"><span class="nav-icon">🏠</span><span>Dashboard</span></div>
-    <div class="nav-item" onclick="navigate('contacts')"><span class="nav-icon">👥</span><span>Leads &amp; Clients</span><span class="nav-badge green">284</span></div>
-  </div>
+    <nav class="nav">
+      <div class="nav-section">MAIN</div>
+      <a class="nav-item active" onclick="navigate('dashboard')">
+        <span class="nav-icon">📊</span> Dashboard
+      </a>
+      <a class="nav-item" onclick="navigate('contacts')">
+        <span class="nav-icon">👥</span> Contacts
+      </a>
 
-  <div class="sidebar-section">
-    <div class="sidebar-section-label">Campaign Modules</div>
-    <div class="nav-item" onclick="navigate('acquisition')"><span class="nav-icon">📡</span><span>Acquisition</span></div>
-    <div class="nav-item" onclick="navigate('conversion')"><span class="nav-icon">🎯</span><span>Conversion</span></div>
-    <div class="nav-item" onclick="navigate('nurture')"><span class="nav-icon">💌</span><span>Nurture</span><span class="nav-badge">4</span></div>
-    <div class="nav-item" onclick="navigate('sales')"><span class="nav-icon">💼</span><span>Sales CRM</span><span class="nav-badge orange">7</span></div>
-    <div class="nav-item" onclick="navigate('retention')"><span class="nav-icon">🏆</span><span>Retention</span></div>
-    <div class="nav-item" onclick="navigate('analytics')"><span class="nav-icon">📊</span><span>Analytics</span></div>
-    <div class="nav-item" onclick="navigate('orchestration')"><span class="nav-icon">🔗</span><span>Automation</span><span class="nav-badge">10</span></div>
-  </div>
+      <div class="nav-section">CAMPAIGNS</div>
+      <a class="nav-item" onclick="navigate('acquisition')">
+        <span class="nav-icon">🎯</span> Acquisition
+      </a>
+      <a class="nav-item" onclick="navigate('conversion')">
+        <span class="nav-icon">🔁</span> Conversion
+      </a>
+      <a class="nav-item" onclick="navigate('nurture')">
+        <span class="nav-icon">📧</span> Nurture
+      </a>
 
-  <div class="sidebar-section">
-    <div class="sidebar-section-label">Campaign Assets</div>
-    <div class="nav-item" onclick="navigate('creatives')"><span class="nav-icon">🎨</span><span>Ad Creatives</span><span class="nav-badge green">16</span></div>
-    <div class="nav-item" onclick="navigate('pricing')"><span class="nav-icon">💰</span><span>Pricing Tiers</span></div>
-    <div class="nav-item" onclick="navigate('copy')"><span class="nav-icon">✍️</span><span>Copy Bank</span></div>
-  </div>
+      <div class="nav-section">REVENUE</div>
+      <a class="nav-item" onclick="navigate('sales')">
+        <span class="nav-icon">💼</span> Sales Pipeline
+      </a>
+      <a class="nav-item" onclick="navigate('retention')">
+        <span class="nav-icon">🔒</span> Retention
+      </a>
 
-  <div class="sidebar-section">
-    <div class="sidebar-section-label">System</div>
-    <div class="nav-item" onclick="showToast('⚙️ Settings panel opening...')"><span class="nav-icon">⚙️</span><span>Settings</span></div>
-  </div>
+      <div class="nav-section">INSIGHTS</div>
+      <a class="nav-item" onclick="navigate('analytics')">
+        <span class="nav-icon">📈</span> Analytics
+      </a>
+      <a class="nav-item" onclick="navigate('orchestration')">
+        <span class="nav-icon">🔄</span> Orchestration
+      </a>
+      <a class="nav-item" onclick="navigate('creatives')">
+        <span class="nav-icon">🎨</span> Creatives
+      </a>
+      <a class="nav-item" onclick="navigate('copy')">
+        <span class="nav-icon">✍️</span> Copy Bank
+      </a>
+    </nav>
 
-  <div class="sidebar-footer">
-    <div class="user-card">
-      <div class="user-avatar" style="background:linear-gradient(135deg,var(--brand),var(--amber))">K</div>
-      <div><div class="user-name">Keith</div><div class="user-role">Aurora Rays LLC · Admin</div></div>
-    </div>
-  </div>
-</nav>
-
-<!-- MAIN -->
-<div id="main">
-  <div id="live-ticker"><span>⚡ LIVE</span><div class="ticker-inner" id="ticker-content"></div></div>
-
-  <div id="topbar">
-    <div class="topbar-left">
+    <div class="sidebar-footer">
+      <div class="user-avatar">U</div>
       <div>
-        <div class="page-title" id="page-title">🌅 Aurora Rays LLC — Campaign Dashboard</div>
-        <div class="page-subtitle" id="page-subtitle">Full-stack automation engine · 6 channels · $15,000/mo budget · All KPIs on track</div>
+        <div class="user-name"><!-- User Name --></div>
+        <div class="user-role"><!-- Role --></div>
       </div>
     </div>
-    <div class="topbar-right">
-      <button class="btn btn-ghost btn-sm" onclick="showToast('🔔 2 automation alerts — scaling winners')">🔔 <span style="background:var(--brand);color:white;border-radius:10px;padding:1px 5px;font-size:10px">2</span></button>
-      <button class="btn btn-ghost btn-sm" onclick="showToast('🔄 All data refreshed!')">🔄 Refresh</button>
-      <a href="aurora-rays-creatives.html" target="_blank" class="btn btn-brand btn-sm">🎨 Ad Creatives</a>
-    </div>
-  </div>
+  </aside>
 
-  <div id="content">
+  <!-- ═══════════════════════════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════════════════════════ -->
+  <main class="main">
 
-    <!-- DASHBOARD -->
-    <div class="view active" id="view-dashboard">
-      <div class="alert-bar">⚡ <strong>Auto-Rule Fired:</strong> Google "High Intent" campaign ROAS hit 5.4× → Budget scaled 25% to $6,250. LinkedIn CPL dropped to $38 → Bid increased 15%.</div>
-      <div class="stats-grid">
-        <div class="stat-card brand-accent"><div class="stat-icon">💰</div><div class="stat-label">Monthly Revenue</div><div class="stat-value">$74,775</div><div class="stat-change up">↑ 38.4% vs last month</div></div>
-        <div class="stat-card green"><div class="stat-icon">👤</div><div class="stat-label">New Leads</div><div class="stat-value">1,284</div><div class="stat-change up">↑ 24.2% vs last month</div></div>
-        <div class="stat-card orange"><div class="stat-icon">🤝</div><div class="stat-label">New Clients</div><div class="stat-value">24</div><div class="stat-change up">↑ 20% vs last month (target: 20✅)</div></div>
-        <div class="stat-card blue"><div class="stat-icon">📈</div><div class="stat-label">Blended ROAS</div><div class="stat-value">4.99×</div><div class="stat-change up">↑ 0.8× vs last month</div></div>
-        <div class="stat-card red"><div class="stat-icon">💸</div><div class="stat-label">Cost Per Lead</div><div class="stat-value">$41.20</div><div class="stat-change down">↓ $3.80 (target: <$45✅)</div></div>
-        <div class="stat-card pink"><div class="stat-icon">🏆</div><div class="stat-label">Client LTV (90d)</div><div class="stat-value">$2,991</div><div class="stat-change up">↑ $312 vs last month</div></div>
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="page-title" id="page-title">Dashboard</h1>
       </div>
-      <div class="grid-7-5">
-        <div class="card">
-          <div class="card-header">
-            <div><div class="card-title">Revenue by Channel — This Month</div><div class="card-subtitle">$15,000 budget · $74,775 revenue · 4.99× ROAS</div></div>
-            <span class="badge badge-green">↑ 38.4%</span>
-          </div>
-          <div class="bar-chart" id="revenue-chart"></div>
-          <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
-            <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text3)"><div style="width:10px;height:10px;border-radius:2px;background:#4285F4"></div>Google $27,000</div>
-            <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text3)"><div style="width:10px;height:10px;border-radius:2px;background:#0A66C2"></div>LinkedIn $21,000</div>
-            <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text3)"><div style="width:10px;height:10px;border-radius:2px;background:#1877F2"></div>Meta $14,775</div>
-            <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text3)"><div style="width:10px;height:10px;border-radius:2px;background:#A78BFA"></div>TikTok $7,500</div>
-            <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text3)"><div style="width:10px;height:10px;border-radius:2px;background:#FF4444"></div>YouTube $4,500</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">Lead → Client Funnel</div></div>
-          <div class="funnel">
-            <div class="funnel-step"><div class="funnel-label">Ad Clicks</div><div class="funnel-bar-wrap"><div class="progress-bar"><div class="progress-fill blue" style="width:100%"></div></div></div><div class="funnel-value">18,400</div><div class="funnel-pct">100%</div></div>
-            <div class="funnel-step"><div class="funnel-label">Page Views</div><div class="funnel-bar-wrap"><div class="progress-bar"><div class="progress-fill purple" style="width:82%"></div></div></div><div class="funnel-value">15,088</div><div class="funnel-pct">82%</div></div>
-            <div class="funnel-step"><div class="funnel-label">Leads</div><div class="funnel-bar-wrap"><div class="progress-bar"><div class="progress-fill orange" style="width:7%"></div></div></div><div class="funnel-value">1,284</div><div class="funnel-pct">7%</div></div>
-            <div class="funnel-step"><div class="funnel-label">Demos</div><div class="funnel-bar-wrap"><div class="progress-bar"><div class="progress-fill green" style="width:2.6%"></div></div></div><div class="funnel-value">480</div><div class="funnel-pct">2.6%</div></div>
-            <div class="funnel-step"><div class="funnel-label">Clients</div><div class="funnel-bar-wrap"><div class="progress-bar"><div class="progress-fill" style="width:0.13%;background:var(--brand)"></div></div></div><div class="funnel-value">24</div><div class="funnel-pct">0.13%</div></div>
-          </div>
-          <div class="divider"></div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text3)"><span>Demo → Client rate</span><span style="color:var(--brand);font-weight:700">25% ✅</span></div>
-        </div>
+      <div class="topbar-right">
+        <button class="btn-primary" onclick="showToast('Action triggered!')">+ New Campaign</button>
       </div>
-      <div class="grid-6-6 mt-16">
-        <div class="card">
-          <div class="card-header"><div class="card-title">Active Campaigns</div><button class="btn btn-ghost btn-sm" onclick="navigate('acquisition')">View All →</button></div>
-          <div class="table-wrap"><table>
-            <thead><tr><th>Campaign</th><th>Spend</th><th>Leads</th><th>ROAS</th><th>Status</th></tr></thead>
-            <tbody id="dash-campaigns"></tbody>
-          </table></div>
-        </div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">Live Activity</div><span class="badge badge-green pulse">● Live</span></div>
-          <div class="event-feed" id="event-feed"></div>
-        </div>
-      </div>
-      <div class="mt-24">
-        <div class="flex-between mb-16"><div class="card-title">All 7 Modules — Live Status</div><span class="badge badge-green">7/7 Active</span></div>
-        <div class="grid-3" style="gap:12px">
-          <div class="card" style="cursor:pointer" onclick="navigate('acquisition')" onmouseover="this.style.borderColor='var(--brand)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="display:flex;justify-content:space-between"><div style="font-size:28px">📡</div><span class="badge badge-green">Active</span></div>
-            <div class="card-title mt-8">Acquisition</div><div class="card-subtitle">6 campaigns · $15K budget</div>
-            <div class="mt-12 text-sm" style="color:var(--brand)">ROAS: 4.99× · CPL: $41.20</div>
-          </div>
-          <div class="card" style="cursor:pointer" onclick="navigate('conversion')" onmouseover="this.style.borderColor='var(--brand)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="display:flex;justify-content:space-between"><div style="font-size:28px">🎯</div><span class="badge badge-green">Active</span></div>
-            <div class="card-title mt-8">Conversion</div><div class="card-subtitle">2 pages · A/B test live</div>
-            <div class="mt-12 text-sm" style="color:var(--brand)">Conv: 8.5% · Winner: Variant B</div>
-          </div>
-          <div class="card" style="cursor:pointer" onclick="navigate('nurture')" onmouseover="this.style.borderColor='var(--brand)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="display:flex;justify-content:space-between"><div style="font-size:28px">💌</div><span class="badge badge-green">Active</span></div>
-            <div class="card-title mt-8">Nurture</div><div class="card-subtitle">4 sequences running</div>
-            <div class="mt-12 text-sm" style="color:var(--brand)">Open: 48.4% · Click: 22.1%</div>
-          </div>
-          <div class="card" style="cursor:pointer" onclick="navigate('sales')" onmouseover="this.style.borderColor='var(--brand)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="display:flex;justify-content:space-between"><div style="font-size:28px">💼</div><span class="badge badge-orange">7 Hot</span></div>
-            <div class="card-title mt-8">Sales CRM</div><div class="card-subtitle">Pipeline + demo tracking</div>
-            <div class="mt-12 text-sm" style="color:var(--brand)">Pipeline: $47,856 · Win: 25%</div>
-          </div>
-          <div class="card" style="cursor:pointer" onclick="navigate('retention')" onmouseover="this.style.borderColor='var(--brand)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="display:flex;justify-content:space-between"><div style="font-size:28px">🏆</div><span class="badge badge-green">Active</span></div>
-            <div class="card-title mt-8">Retention</div><div class="card-subtitle">Client success + upsells</div>
-            <div class="mt-12 text-sm" style="color:var(--brand)">Churn: 4.2% · LTV: $2,991</div>
-          </div>
-          <div class="card" style="cursor:pointer" onclick="navigate('orchestration')" onmouseover="this.style.borderColor='var(--brand)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="display:flex;justify-content:space-between"><div style="font-size:28px">🔗</div><span class="badge badge-green">10 Running</span></div>
-            <div class="card-title mt-8">Automation</div><div class="card-subtitle">10 workflows · 4,820 runs</div>
-            <div class="mt-12 text-sm" style="color:var(--brand)">Success: 99.6% · 218h saved</div>
-          </div>
-        </div>
+    </header>
+
+    <!-- Ticker -->
+    <div class="ticker-wrap">
+      <div class="ticker" id="ticker">
+        <!-- Populated by renderTicker() -->
       </div>
     </div>
 
-    <!-- LEADS & CLIENTS -->
-    <div class="view" id="view-contacts">
-      <div class="stats-grid">
-        <div class="stat-card brand-accent"><div class="stat-icon">👥</div><div class="stat-label">Total Leads</div><div class="stat-value">1,284</div><div class="stat-change up">↑ 24.2%</div></div>
-        <div class="stat-card green"><div class="stat-icon">🤝</div><div class="stat-label">Active Clients</div><div class="stat-value">284</div><div class="stat-change up">↑ 18.4%</div></div>
-        <div class="stat-card orange"><div class="stat-icon">📅</div><div class="stat-label">Demos Booked</div><div class="stat-value">480</div><div class="stat-change up">↑ 31.2%</div></div>
-        <div class="stat-card blue"><div class="stat-icon">📊</div><div class="stat-label">Avg Lead Score</div><div class="stat-value">74.8</div><div class="stat-change up">↑ 6.2pts</div></div>
+    <!-- ─────────────────────────────────────────
+         VIEWS — one per nav item
+    ───────────────────────────────────────── -->
+
+    <!-- DASHBOARD VIEW -->
+    <section class="view active" id="view-dashboard">
+      <div class="stat-grid" id="dash-stats">
+        <!-- Populated by renderDashStats() -->
       </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">Revenue by Channel</div>
+          <div id="revenue-chart"></div>
+        </div>
+        <div class="card">
+          <div class="card-header">Active Campaigns</div>
+          <div id="dash-campaigns"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">Live Event Feed</div>
+        <div id="event-feed"></div>
+      </div>
+    </section>
+
+    <!-- CONTACTS VIEW -->
+    <section class="view" id="view-contacts">
       <div class="card">
         <div class="card-header">
-          <div class="card-title">All Leads &amp; Clients</div>
-          <div class="flex gap-8">
-            <input class="form-input" style="width:220px" placeholder="🔍 Search leads..." oninput="filterContacts(this.value)"/>
-            <button class="btn btn-brand btn-sm" onclick="showToast('✅ New lead added!')">+ Add Lead</button>
-          </div>
+          Contacts
+          <input class="search-input" type="text" placeholder="Search contacts..." oninput="filterContacts(this.value)" />
         </div>
-        <div class="table-wrap"><table>
-          <thead><tr><th>Contact</th><th>Company</th><th>Status</th><th>Score</th><th>Source</th><th>Plan</th><th>Joined</th><th>Actions</th></tr></thead>
-          <tbody id="contacts-table"></tbody>
-        </table></div>
-      </div>
-    </div>
-
-    <!-- ACQUISITION -->
-    <div class="view" id="view-acquisition">
-      <div class="alert-bar">🤖 <strong>Auto-Rule Fired:</strong> Google "High Intent" ROAS = 5.4× → Budget ↑ 25% to $6,250. LinkedIn CPL = $38 → Bids ↑ 15%. TikTok "Before/After" CTR = 1.4% → Paused.</div>
-      <div class="stats-grid">
-        <div class="stat-card brand-accent"><div class="stat-icon">💸</div><div class="stat-label">Total Ad Spend</div><div class="stat-value">$15,000</div><div class="stat-change up">On budget</div></div>
-        <div class="stat-card green"><div class="stat-icon">🖱️</div><div class="stat-label">Total Clicks</div><div class="stat-value">18,400</div><div class="stat-change up">↑ 28.4%</div></div>
-        <div class="stat-card orange"><div class="stat-icon">👤</div><div class="stat-label">Total Leads</div><div class="stat-value">1,284</div><div class="stat-change up">↑ 24.2%</div></div>
-        <div class="stat-card blue"><div class="stat-icon">📈</div><div class="stat-label">Blended ROAS</div><div class="stat-value">4.99×</div><div class="stat-change up">↑ 0.8×</div></div>
-      </div>
-      <div class="flex-between mb-16">
-        <div class="tabs" style="margin-bottom:0">
-          <div class="tab active" onclick="setTab(this)">All Channels</div>
-          <div class="tab" onclick="setTab(this)">Google</div>
-          <div class="tab" onclick="setTab(this)">LinkedIn</div>
-          <div class="tab" onclick="setTab(this)">Meta</div>
-          <div class="tab" onclick="setTab(this)">TikTok</div>
-        </div>
-        <button class="btn btn-brand btn-sm" onclick="showToast('🚀 Campaign wizard launched!')">+ New Campaign</button>
-      </div>
-      <div class="ad-grid" id="ad-cards"></div>
-      <div class="card mt-16">
-        <div class="card-header"><div class="card-title">🤖 Automated Rules — Active</div><button class="btn btn-ghost btn-sm" onclick="showToast('⚙️ Rule builder opened!')">+ Add Rule</button></div>
-        <div id="rules-list"></div>
-      </div>
-    </div>
-
-    <!-- CONVERSION -->
-    <div class="view" id="view-conversion">
-      <div class="stats-grid">
-        <div class="stat-card brand-accent"><div class="stat-icon">📄</div><div class="stat-label">Active Pages</div><div class="stat-value">2</div><div class="stat-change up">A/B test live</div></div>
-        <div class="stat-card green"><div class="stat-icon">👁️</div><div class="stat-label">Page Views</div><div class="stat-value">15,088</div><div class="stat-change up">↑ 28.4%</div></div>
-        <div class="stat-card orange"><div class="stat-icon">📝</div><div class="stat-label">Leads Captured</div><div class="stat-value">1,284</div><div class="stat-change up">↑ 24.2%</div></div>
-        <div class="stat-card blue"><div class="stat-icon">🔄</div><div class="stat-label">Conv. Rate</div><div class="stat-value">8.5%</div><div class="stat-change up">↑ 1.2% (target: 7%✅)</div></div>
-      </div>
-      <div class="grid-7-5">
-        <div class="card">
-          <div class="card-header"><div class="card-title">Landing Pages</div><button class="btn btn-brand btn-sm" onclick="showToast('🎨 Page builder launched!')">+ New Page</button></div>
-          <div class="table-wrap"><table>
-            <thead><tr><th>Page</th><th>Views</th><th>Leads</th><th>Conv %</th><th>A/B</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr><td><strong>🌅 "Your Business. Fully Automated."</strong></td><td>8,200</td><td>574</td><td><span style="color:var(--brand);font-weight:700">7.0%</span></td><td><span class="badge badge-purple">A/B Live</span></td><td><span class="badge badge-green">Live</span></td></tr>
-              <tr><td><strong>🤖 "Stop Doing Marketing Manually"</strong></td><td>6,888</td><td>710</td><td><span style="color:var(--brand);font-weight:700">10.3%</span></td><td><span class="badge badge-green">Winner ✓</span></td><td><span class="badge badge-green">Live</span></td></tr>
-            </tbody>
-          </table></div>
-          <div class="divider"></div>
-          <div class="card-title mb-16" style="font-size:13px">Form Performance</div>
-          <div class="table-wrap"><table>
-            <thead><tr><th>Form Field</th><th>Completion %</th><th>Drop-off</th></tr></thead>
-            <tbody>
-              <tr><td>Full Name</td><td><span style="color:var(--success)">94%</span></td><td>6%</td></tr>
-              <tr><td>Work Email</td><td><span style="color:var(--success)">97%</span></td><td>3%</td></tr>
-              <tr><td>Company Name</td><td><span style="color:var(--success)">91%</span></td><td>9%</td></tr>
-              <tr><td>Monthly Budget</td><td><span style="color:var(--warning)">74%</span></td><td>26% ⚠️</td></tr>
-              <tr><td>Phone Number</td><td><span style="color:var(--warning)">68%</span></td><td>32% ⚠️</td></tr>
-            </tbody>
-          </table></div>
-        </div>
-        <div>
-          <div class="card-title mb-16">Live Page Preview — Variant B (Winner)</div>
-          <div class="lp-preview">
-            <div class="lp-hero" style="background:linear-gradient(135deg,#0a0a14,#1a0a2e)">
-              <div style="font-size:32px;margin-bottom:8px">🌅</div>
-              <div style="font-size:11px;opacity:.6;margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em">Free Strategy Call · No Commitment</div>
-              <h2 style="font-size:20px">Stop Doing Marketing<br/><span style="color:#F59E0B">Manually.</span></h2>
-              <p style="margin-top:8px;font-size:13px">Aurora Rays automates your entire marketing stack. Set it once. Grow forever.</p>
-            </div>
-            <div class="lp-form">
-              <input class="lp-input" placeholder="Full name" readonly/>
-              <input class="lp-input" placeholder="Work email address" readonly/>
-              <input class="lp-input" placeholder="Company name" readonly/>
-              <button class="lp-btn" style="background:var(--brand)" onclick="showToast('🌅 Lead captured! Nurture sequence triggered.')">🌅 Book Free Strategy Call →</button>
-            </div>
-            <div class="lp-trust">
-              <div class="lp-trust-item">✅ 100% Free</div>
-              <div class="lp-trust-item">⏱️ 15 Minutes</div>
-              <div class="lp-trust-item">🚀 Results in 30 Days</div>
-            </div>
-          </div>
-          <div class="card mt-12">
-            <div class="card-title" style="font-size:12px;margin-bottom:10px">A/B Test Results</div>
-            <div style="display:flex;gap:8px;margin-bottom:8px">
-              <div style="flex:1;background:var(--bg3);border-radius:8px;padding:10px;text-align:center">
-                <div style="font-size:18px;font-weight:800;color:var(--text2)">7.0%</div>
-                <div style="font-size:11px;color:var(--text3)">Variant A — Brand Promise</div>
-              </div>
-              <div style="flex:1;background:var(--brand-light);border-radius:8px;padding:10px;text-align:center;border:1px solid rgba(124,58,237,.3)">
-                <div style="font-size:18px;font-weight:800;color:var(--brand)">10.3%</div>
-                <div style="font-size:11px;color:var(--text3)">Variant B ✓ Pain Point</div>
-              </div>
-            </div>
-            <div style="font-size:11px;color:var(--text3)">Confidence: 96% · 15,088 visitors · Auto-routing 100% to B</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- NURTURE -->
-    <div class="view" id="view-nurture">
-      <div class="stats-grid">
-        <div class="stat-card brand-accent"><div class="stat-icon">📧</div><div class="stat-label">Emails Sent</div><div class="stat-value">18,420</div><div class="stat-change up">↑ 32.4%</div></div>
-        <div class="stat-card green"><div class="stat-icon">👁️</div><div class="stat-label">Avg Open Rate</div><div class="stat-value">48.4%</div><div class="stat-change up">↑ 6.4% (target: 42%✅)</div></div>
-        <div class="stat-card orange"><div class="stat-icon">🖱️</div><div class="stat-label">Avg Click Rate</div><div class="stat-value">22.1%</div><div class="stat-change up">↑ 4.1%</div></div>
-        <div class="stat-card blue"><div class="stat-icon">📅</div><div class="stat-label">Demos Booked</div><div class="stat-value">480</div><div class="stat-change up">↑ 31.2%</div></div>
-      </div>
-      <div class="grid-7-5">
-        <div class="card">
-          <div class="card-header"><div class="card-title">Email Sequences</div><button class="btn btn-brand btn-sm" onclick="showToast('✉️ Sequence builder opened!')">+ New Sequence</button></div>
-          <div class="sequence-list" id="sequence-list"></div>
-        </div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">Lead Audit Sequence — Flow</div></div>
-          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:16px">7 Emails · 1,284 active leads</div>
-          <div style="display:flex;flex-direction:column;gap:0">
-            <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px">
-              <div style="display:flex;flex-direction:column;align-items:center"><div style="width:32px;height:32px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:white;flex-shrink:0">1</div><div style="width:2px;flex:1;background:var(--border);margin-top:4px;min-height:18px"></div></div>
-              <div style="flex:1;padding-top:4px"><div style="font-size:13px;font-weight:600;color:var(--text)">Your Free Audit is Ready 🌅</div><div style="font-size:11px;color:var(--text3)">Immediate · Open: 68% · Click: 34%</div></div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px">
-              <div style="display:flex;flex-direction:column;align-items:center"><div style="width:32px;height:32px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--text2);flex-shrink:0">2</div><div style="width:2px;flex:1;background:var(--border);margin-top:4px;min-height:18px"></div></div>
-              <div style="flex:1;padding-top:4px"><div style="font-size:13px;font-weight:600;color:var(--text)">#1 Reason Businesses Lose Leads</div><div style="font-size:11px;color:var(--text3)">Day 2 · Open: 54% · Click: 26%</div></div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px">
-              <div style="display:flex;flex-direction:column;align-items:center"><div style="width:32px;height:32px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--text2);flex-shrink:0">3</div><div style="width:2px;flex:1;background:var(--border);margin-top:4px;min-height:18px"></div></div>
-              <div style="flex:1;padding-top:4px"><div style="font-size:13px;font-weight:600;color:var(--text)">Case Study: 3× More Leads in 90 Days</div><div style="font-size:11px;color:var(--text3)">Day 4 · Open: 48% · Click: 22%</div></div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px">
-              <div style="display:flex;flex-direction:column;align-items:center"><div style="width:32px;height:32px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--text2);flex-shrink:0">4</div><div style="width:2px;flex:1;background:var(--border);margin-top:4px;min-height:18px"></div></div>
-              <div style="flex:1;padding-top:4px"><div style="font-size:13px;font-weight:600;color:var(--text)">The 5 Automations Every Business Needs</div><div style="font-size:11px;color:var(--text3)">Day 6 · Open: 44% · Click: 19%</div></div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px">
-              <div style="display:flex;flex-direction:column;align-items:center"><div style="width:32px;height:32px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--text2);flex-shrink:0">5</div><div style="width:2px;flex:1;background:var(--border);margin-top:4px;min-height:18px"></div></div>
-              <div style="flex:1;padding-top:4px"><div style="font-size:13px;font-weight:600;color:var(--text)">Your Competitors Are Already Doing This...</div><div style="font-size:11px;color:var(--text3)">Day 9 · Open: 51% · Click: 28%</div></div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px">
-              <div style="display:flex;flex-direction:column;align-items:center"><div style="width:32px;height:32px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--text2);flex-shrink:0">6</div><div style="width:2px;flex:1;background:var(--border);margin-top:4px;min-height:18px"></div></div>
-              <div style="flex:1;padding-top:4px"><div style="font-size:13px;font-weight:600;color:var(--text)">Aurora Rays Pricing — What's Right For You?</div><div style="font-size:11px;color:var(--text3)">Day 12 · Open: 42% · Click: 31%</div></div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start">
-              <div style="width:32px;height:32px;border-radius:50%;background:var(--success);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:white;flex-shrink:0">7</div>
-              <div style="flex:1;padding-top:4px"><div style="font-size:13px;font-weight:600;color:var(--text)">Last Chance — Free Strategy Call Expires</div><div style="font-size:11px;color:var(--text3)">Day 14 · Open: 46% · Click: 38% · Demo: 37.5%</div></div>
-            </div>
-          </div>
-          <div class="divider"></div>
-          <div style="display:flex;gap:8px">
-            <button class="btn btn-brand btn-sm w-full" onclick="showToast('✏️ Sequence editor opened!')">Edit Sequence</button>
-            <button class="btn btn-ghost btn-sm w-full" onclick="showToast('📊 Full report generated!')">View Report</button>
-          </div>
-        </div>
-      </div>
-      <div class="card mt-16">
-        <div class="card-header"><div class="card-title">Segmentation Engine</div><button class="btn btn-ghost btn-sm" onclick="showToast('🧩 Segment builder opened!')">+ New Segment</button></div>
-        <div class="grid-3" style="gap:12px">
-          <div style="background:var(--bg3);border-radius:var(--radius);padding:14px"><div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px">🔥 Hot Leads</div><div style="font-size:11px;color:var(--text3);margin-bottom:10px">Score > 80 · Opened 3+ emails</div><div style="font-size:22px;font-weight:800;color:var(--brand)">187</div><div style="font-size:11px;color:var(--text3)">→ Fast-track to demo</div></div>
-          <div style="background:var(--bg3);border-radius:var(--radius);padding:14px"><div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px">📅 Demo Ready</div><div style="font-size:11px;color:var(--text3);margin-bottom:10px">Clicked pricing email</div><div style="font-size:22px;font-weight:800;color:var(--warning)">342</div><div style="font-size:11px;color:var(--text3)">→ Book demo sequence</div></div>
-          <div style="background:var(--bg3);border-radius:var(--radius);padding:14px"><div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px">😴 Cold Leads</div><div style="font-size:11px;color:var(--text3);margin-bottom:10px">No activity > 14 days</div><div style="font-size:22px;font-weight:800;color:var(--danger)">412</div><div style="font-size:11px;color:var(--text3)">→ Re-engagement flow</div></div>
-          <div style="background:var(--bg3);border-radius:var(--radius);padding:14px"><div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px">🏢 Agency Leads</div><div style="font-size:11px;color:var(--text3);margin-bottom:10px">Company size > 10</div><div style="font-size:22px;font-weight:800;color:var(--info)">228</div><div style="font-size:11px;color:var(--text3)">→ Scale plan sequence</div></div>
-          <div style="background:var(--bg3);border-radius:var(--radius);padding:14px"><div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px">💰 High Budget</div><div style="font-size:11px;color:var(--text3);margin-bottom:10px">Budget > $5K/mo</div><div style="font-size:22px;font-weight:800;color:var(--success)">115</div><div style="font-size:11px;color:var(--text3)">→ Enterprise sequence</div></div>
-          <div style="background:var(--bg3);border-radius:var(--radius);padding:14px;border:1px dashed var(--border2);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px" onclick="showToast('🧩 Segment builder opened!')"><div style="font-size:24px">+</div><div style="font-size:12px;color:var(--text3)">New Segment</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SALES CRM -->
-    <div class="view" id="view-sales">
-      <div class="stats-grid">
-        <div class="stat-card brand-accent"><div class="stat-icon">💼</div><div class="stat-label">Pipeline Value</div><div class="stat-value">$47,856</div><div class="stat-change up">↑ 28.4%</div></div>
-        <div class="stat-card green"><div class="stat-icon">✅</div><div class="stat-label">Won This Month</div><div class="stat-value">$23,928</div><div class="stat-change up">↑ 38.4%</div></div>
-        <div class="stat-card orange"><div class="stat-icon">⏳</div><div class="stat-label">Avg Sales Cycle</div><div class="stat-value">18 days</div><div class="stat-change down">↓ 4 days</div></div>
-        <div class="stat-card blue"><div class="stat-icon">🎯</div><div class="stat-label">Demo → Client</div><div class="stat-value">25%</div><div class="stat-change up">↑ 5% (target: 25%✅)</div></div>
-      </div>
-      <div class="card mb-16">
-        <div class="card-header"><div class="card-title">Sales Pipeline</div><button class="btn btn-brand btn-sm" onclick="showToast('💼 New deal created!')">+ New Deal</button></div>
-        <div class="pipeline" id="pipeline-board"></div>
-      </div>
-      <div class="grid-6-6">
-        <div class="card">
-          <div class="card-header"><div class="card-title">Hot Leads — Action Required</div></div>
-          <div class="table-wrap"><table>
-            <thead><tr><th>Lead</th><th>Company</th><th>Action</th><th>Due</th><th>Priority</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Marcus Chen</strong></td><td>GrowthAgency</td><td>📞 Demo Call</td><td>Today</td><td><span class="badge badge-red">High</span></td></tr>
-              <tr><td><strong>Sarah Williams</strong></td><td>EcomBrand Co</td><td>📄 Send Proposal</td><td>Tomorrow</td><td><span class="badge badge-red">High</span></td></tr>
-              <tr><td><strong>James Park</strong></td><td>SaaS Startup</td><td>📧 Follow-up</td><td>Jan 25</td><td><span class="badge badge-orange">Medium</span></td></tr>
-              <tr><td><strong>Lisa Torres</strong></td><td>LocalBiz LLC</td><td>🎥 Product Demo</td><td>Jan 26</td><td><span class="badge badge-orange">Medium</span></td></tr>
-              <tr><td><strong>David Kim</strong></td><td>MediaHouse</td><td>📞 Discovery</td><td>Jan 28</td><td><span class="badge badge-blue">Normal</span></td></tr>
-            </tbody>
-          </table></div>
-        </div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">Auto Follow-up Sequences</div></div>
-          <div style="display:flex;flex-direction:column;gap:10px">
-            <div style="background:var(--bg3);border-radius:var(--radius-sm);padding:12px;display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:13px;font-weight:600;color:var(--text)">No-show → Reschedule (1h)</div><div style="font-size:11px;color:var(--text3)">Auto-fires 1h after missed demo</div></div><label class="toggle"><input type="checkbox" checked/><span class="toggle-slider"></span></label></div>
-            <div style="background:var(--bg3);border-radius:var(--radius-sm);padding:12px;display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:13px;font-weight:600;color:var(--text)">Post-demo → Proposal (24h)</div><div style="font-size:11px;color:var(--text3)">Sends proposal template + case studies</div></div><label class="toggle"><input type="checkbox" checked/><span class="toggle-slider"></span></label></div>
-            <div style="background:var(--bg3);border-radius:var(--radius-sm);padding:12px;display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:13px;font-weight:600;color:var(--text)">Proposal sent → 3-touch follow-up</div><div style="font-size:11px;color:var(--text3)">Day 2, 5, 10 follow-up emails</div></div><label class="toggle"><input type="checkbox" checked/><span class="toggle-slider"></span></label></div>
-            <div style="background:var(--bg3);border-radius:var(--radius-sm);padding:12px;display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:13px;font-weight:600;color:var(--text)">Deal won → Onboarding sequence</div><div style="font-size:11px;color:var(--text3)">Triggers 5-email onboarding flow</div></div><label class="toggle"><input type="checkbox" checked/><span class="toggle-slider"></span></label></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RETENTION -->
-    <div class="view" id="view-retention">
-      <div class="stats-grid">
-        <div class="stat-card brand-accent"><div class="stat-icon">🔁</div><div class="stat-label">Client Retention</div><div class="stat-value">95.8%</div><div class="stat-change up">↑ 1.2% (target: 95%✅)</div></div>
-        <div class="stat-card green"><div class="stat-icon">🤝</div><div class="stat-label">Active Clients</div><div class="stat-value">284</div><div class="stat-change up">↑ 18.4%</div></div>
-        <div class="stat-card orange"><div class="stat-icon">⬆️</div><div class="stat-label">Upsell Revenue</div><div class="stat-value">$18,840</div><div class="stat-change up">↑ 42.1%</div></div>
-        <div class="stat-card blue"><div class="stat-icon">💰</div><div class="stat-label">Avg LTV (90d)</div><div class="stat-value">$2,991</div><div class="stat-change up">↑ $312</div></div>
-      </div>
-      <div class="grid-7-5">
-        <div class="card">
-          <div class="card-header"><div class="card-title">Client Loyalty &amp; Tiers</div><button class="btn btn-ghost btn-sm" onclick="showToast('🏆 Loyalty settings opened!')">Configure</button></div>
-          <div class="loyalty-grid" id="loyalty-grid"></div>
-        </div>
-        <div>
-          <div class="card mb-16">
-            <div class="card-header"><div class="card-title">Plan Distribution</div></div>
-            <div style="display:flex;flex-direction:column;gap:8px">
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px;background:var(--brand-light);border-radius:8px;border:1px solid rgba(124,58,237,.2)"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:16px">⭐</span><span style="font-size:13px;font-weight:600;color:var(--text)">Starter — $497/mo</span></div><div style="text-align:right"><div style="font-size:14px;font-weight:800;color:var(--text)">142</div><div style="font-size:10px;color:var(--text3)">clients</div></div></div>
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px;background:var(--brand-light);border-radius:8px;border:1px solid rgba(124,58,237,.3)"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:16px">🚀</span><span style="font-size:13px;font-weight:600;color:var(--brand)">Growth — $997/mo</span></div><div style="text-align:right"><div style="font-size:14px;font-weight:800;color:var(--brand)">98</div><div style="font-size:10px;color:var(--text3)">clients</div></div></div>
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px;background:rgba(245,158,11,.08);border-radius:8px;border:1px solid rgba(245,158,11,.2)"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:16px">⚡</span><span style="font-size:13px;font-weight:600;color:var(--amber)">Scale — $1,997/mo</span></div><div style="text-align:right"><div style="font-size:14px;font-weight:800;color:var(--amber)">34</div><div style="font-size:10px;color:var(--text3)">clients</div></div></div>
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px;background:rgba(34,197,94,.08);border-radius:8px;border:1px solid rgba(34,197,94,.2)"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:16px">👑</span><span style="font-size:13px;font-weight:600;color:var(--success)">Enterprise — $4,997/mo</span></div><div style="text-align:right"><div style="font-size:14px;font-weight:800;color:var(--success)">10</div><div style="font-size:10px;color:var(--text3)">clients</div></div></div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header"><div class="card-title">Retention Flows</div></div>
-            <div style="display:flex;flex-direction:column;gap:8px">
-              <div style="background:var(--bg3);border-radius:8px;padding:12px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><span style="font-size:13px;font-weight:600;color:var(--text)">30-Day Check-in</span><span class="badge badge-green">Active</span></div><div style="font-size:11px;color:var(--text3)">All clients · Results report + next steps</div></div>
-              <div style="background:var(--bg3);border-radius:8px;padding:12px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><span style="font-size:13px;font-weight:600;color:var(--text)">Starter → Growth Upsell</span><span class="badge badge-green">Active</span></div><div style="font-size:11px;color:var(--text3)">Day 30 on Starter · 3-email upsell sequence</div></div>
-              <div style="background:var(--bg3);border-radius:8px;padding:12px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><span style="font-size:13px;font-weight:600;color:var(--text)">Cancellation Save</span><span class="badge badge-green">Active</span></div><div style="font-size:11px;color:var(--text3)">Saves 38% of cancellations · Discount offer</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ANALYTICS -->
-    <div class="view" id="view-analytics">
-      <div class="stats-grid">
-        <div class="stat-card brand-accent"><div class="stat-icon">💰</div><div class="stat-label">Monthly Revenue</div><div class="stat-value">$74,775</div><div class="stat-change up">↑ 38.4%</div></div>
-        <div class="stat-card green"><div class="stat-icon">📈</div><div class="stat-label">Blended ROAS</div><div class="stat-value">4.99×</div><div class="stat-change up">↑ 0.8×</div></div>
-        <div class="stat-card orange"><div class="stat-icon">💸</div><div class="stat-label">Total Ad Spend</div><div class="stat-value">$15,000</div><div class="stat-change up">On budget</div></div>
-        <div class="stat-card blue"><div class="stat-icon">🎯</div><div class="stat-label">Cost Per Lead</div><div class="stat-value">$41.20</div><div class="stat-change down">↓ $3.80 (target: <$45✅)</div></div>
-        <div class="stat-card red"><div class="stat-icon">📅</div><div class="stat-label">Cost Per Demo</div><div class="stat-value">$109</div><div class="stat-change down">↓ $11 (target: <$120✅)</div></div>
-        <div class="stat-card pink"><div class="stat-icon">🤝</div><div class="stat-label">Cost Per Client</div><div class="stat-value">$625</div><div class="stat-change down">↓ $175 (target: <$800✅)</div></div>
-      </div>
-      <div class="grid-7-5">
-        <div class="card">
-          <div class="card-header"><div><div class="card-title">Revenue by Channel</div><div class="card-subtitle">$15,000 spend → $74,775 revenue</div></div><span class="badge badge-green">4.99× ROAS</span></div>
-          <div class="bar-chart" id="analytics-chart"></div>
-        </div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">Full Funnel</div></div>
-          <div class="funnel">
-            <div class="funnel-step"><div class="funnel-label">Ad Clicks</div><div class="funnel-bar-wrap"><div class="progress-bar"><div class="progress-fill blue" style="width:100%"></div></div></div><div class="funnel-value">18,400</div><div class="funnel-pct">100%</div></div>
-            <div class="funnel-step"><div class="funnel-label">Page Views</div><div class="funnel-bar-wrap"><div class="progress-bar"><div class="progress-fill purple" style="width:82%"></div></div></div><div class="funnel-value">15,088</div><div class="funnel-pct">82%</div></div>
-            <div class="funnel-step"><div class="funnel-label">Leads</div><div class="funnel-bar-wrap"><div class="progress-bar"><div class="progress-fill orange" style="width:7%"></div></div></div><div class="funnel-value">1,284</div><div class="funnel-pct">7%</div></div>
-            <div class="funnel-step"><div class="funnel-label">Demos</div><div class="funnel-bar-wrap"><div class="progress-bar"><div class="progress-fill green" style="width:2.6%"></div></div></div><div class="funnel-value">480</div><div class="funnel-pct">2.6%</div></div>
-            <div class="funnel-step"><div class="funnel-label">Clients</div><div class="funnel-bar-wrap"><div class="progress-bar"><div class="progress-fill" style="width:0.13%;background:var(--brand)"></div></div></div><div class="funnel-value">24</div><div class="funnel-pct">0.13%</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="card mt-16">
-        <div class="card-header"><div class="card-title">KPI Scorecard — All Targets</div></div>
-        <div class="table-wrap"><table>
-          <thead><tr><th>KPI</th><th>Target</th><th>Actual</th><th>Status</th><th>Trend</th></tr></thead>
-          <tbody id="kpi-table"></tbody>
-        </table></div>
-      </div>
-      <div class="card mt-16">
-        <div class="card-header"><div class="card-title">Channel Attribution</div><div class="flex gap-8"><button class="btn btn-brand btn-sm">Last Click</button><button class="btn btn-ghost btn-sm" onclick="showToast('📊 Linear selected')">Linear</button><button class="btn btn-ghost btn-sm" onclick="showToast('📊 Data-driven selected')">Data-Driven</button></div></div>
-        <div id="attribution-chart"></div>
-      </div>
-    </div>
-
-    <!-- ORCHESTRATION -->
-    <div class="view" id="view-orchestration">
-      <div class="stats-grid">
-        <div class="stat-card brand-accent"><div class="stat-icon">⚡</div><div class="stat-label">Active Workflows</div><div class="stat-value">10</div><div class="stat-change up">All systems go</div></div>
-        <div class="stat-card green"><div class="stat-icon">🔄</div><div class="stat-label">Total Runs</div><div class="stat-value">4,820</div><div class="stat-change up">↑ 48.2%</div></div>
-        <div class="stat-card orange"><div class="stat-icon">⏱️</div><div class="stat-label">Hours Saved</div><div class="stat-value">218h</div><div class="stat-change up">↑ 54h this month</div></div>
-        <div class="stat-card blue"><div class="stat-icon">✅</div><div class="stat-label">Success Rate</div><div class="stat-value">99.6%</div><div class="stat-change up">↑ 0.2%</div></div>
-      </div>
-      <div class="card mb-16">
-        <div class="card-header"><div class="card-title">🤖 Aurora Rays Automation Workflows</div><button class="btn btn-brand btn-sm" onclick="showToast('🔗 Visual workflow builder opened!')">+ New Workflow</button></div>
-        <div class="workflow-list" id="workflow-list"></div>
-      </div>
-      <div class="card">
-        <div class="card-header"><div class="card-title">Full Campaign Automation Map</div><div class="card-subtitle">How all 7 modules connect for Aurora Rays LLC</div></div>
-        <div style="overflow-x:auto;padding:16px 0">
-          <div style="display:flex;align-items:center;justify-content:center;gap:0;min-width:700px">
-            <div style="background:var(--brand-light);border:2px solid var(--brand);border-radius:12px;padding:14px 16px;text-align:center;min-width:100px;cursor:pointer" onclick="navigate('acquisition')"><div style="font-size:22px">📡</div><div style="font-size:11px;font-weight:700;color:var(--brand);margin-top:4px">Acquisition</div><div style="font-size:10px;color:var(--text3)">6 Campaigns</div></div>
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0 4px"><div style="font-size:10px;color:var(--text3)">click</div><div style="font-size:18px;color:var(--brand)">→</div></div>
-            <div style="background:rgba(59,130,246,.15);border:2px solid var(--info);border-radius:12px;padding:14px 16px;text-align:center;min-width:100px;cursor:pointer" onclick="navigate('conversion')"><div style="font-size:22px">🎯</div><div style="font-size:11px;font-weight:700;color:var(--info);margin-top:4px">Conversion</div><div style="font-size:10px;color:var(--text3)">8.5% Conv.</div></div>
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0 4px"><div style="font-size:10px;color:var(--text3)">lead</div><div style="font-size:18px;color:var(--info)">→</div></div>
-            <div style="background:rgba(245,158,11,.15);border:2px solid var(--warning);border-radius:12px;padding:14px 16px;text-align:center;min-width:100px;cursor:pointer" onclick="navigate('nurture')"><div style="font-size:22px">💌</div><div style="font-size:11px;font-weight:700;color:var(--warning);margin-top:4px">Nurture</div><div style="font-size:10px;color:var(--text3)">48.4% Open</div></div>
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0 4px"><div style="font-size:10px;color:var(--text3)">score</div><div style="font-size:18px;color:var(--warning)">→</div></div>
-            <div style="background:rgba(239,68,68,.15);border:2px solid var(--danger);border-radius:12px;padding:14px 16px;text-align:center;min-width:100px;cursor:pointer" onclick="navigate('sales')"><div style="font-size:22px">💼</div><div style="font-size:11px;font-weight:700;color:var(--danger);margin-top:4px">Sales CRM</div><div style="font-size:10px;color:var(--text3)">25% Close</div></div>
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0 4px"><div style="font-size:10px;color:var(--text3)">win</div><div style="font-size:18px;color:var(--danger)">→</div></div>
-            <div style="background:rgba(34,197,94,.15);border:2px solid var(--success);border-radius:12px;padding:14px 16px;text-align:center;min-width:100px;cursor:pointer" onclick="navigate('retention')"><div style="font-size:22px">🏆</div><div style="font-size:11px;font-weight:700;color:var(--success);margin-top:4px">Retention</div><div style="font-size:10px;color:var(--text3)">95.8% Rate</div></div>
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0 4px"><div style="font-size:10px;color:var(--text3)">data</div><div style="font-size:18px;color:var(--success)">→</div></div>
-            <div style="background:var(--brand-light);border:2px solid var(--brand);border-radius:12px;padding:14px 16px;text-align:center;min-width:100px;cursor:pointer" onclick="navigate('analytics')"><div style="font-size:22px">📊</div><div style="font-size:11px;font-weight:700;color:var(--brand);margin-top:4px">Analytics</div><div style="font-size:10px;color:var(--text3)">4.99× ROAS</div></div>
-          </div>
-          <div style="display:flex;justify-content:center;margin-top:20px">
-            <div style="background:var(--brand-light);border:2px dashed var(--brand);border-radius:12px;padding:12px 32px;text-align:center;cursor:pointer;max-width:560px;width:100%" onclick="navigate('orchestration')">
-              <div style="font-size:16px;margin-bottom:4px">🔗 Automation Layer — 10 Workflows Active</div>
-              <div style="font-size:11px;color:var(--text3)">4,820 runs · 99.6% success · 218 hours saved · All modules connected</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CREATIVES -->
-    <div class="view" id="view-creatives">
-      <div class="stats-grid">
-        <div class="stat-card brand-accent"><div class="stat-icon">🎨</div><div class="stat-label">Total Creatives</div><div class="stat-value">16</div><div class="stat-change up">6 channels</div></div>
-        <div class="stat-card green"><div class="stat-icon">✅</div><div class="stat-label">Active</div><div class="stat-value">14</div><div class="stat-change up">2 in A/B test</div></div>
-        <div class="stat-card orange"><div class="stat-icon">🏆</div><div class="stat-label">Top Performer</div><div class="stat-value">10.3%</div><div class="stat-change up">Landing Page B</div></div>
-        <div class="stat-card blue"><div class="stat-icon">⏸️</div><div class="stat-label">Paused</div><div class="stat-value">2</div><div class="stat-change down">Low CTR auto-paused</div></div>
-      </div>
-      <div class="alert-bar amber">💡 <strong>Creative Insight:</strong> LinkedIn "Competitor FOMO" headline outperforming standard by 2.8×. Pain-point hooks converting 47% better than brand-promise hooks across all channels.</div>
-      <div class="flex-between mb-16">
-        <div class="tabs" style="margin-bottom:0">
-          <div class="tab active" onclick="setTab(this)">All</div>
-          <div class="tab" onclick="setTab(this)">Google</div>
-          <div class="tab" onclick="setTab(this)">LinkedIn</div>
-          <div class="tab" onclick="setTab(this)">Meta</div>
-          <div class="tab" onclick="setTab(this)">TikTok</div>
-          <div class="tab" onclick="setTab(this)">Email</div>
-        </div>
-        <div style="display:flex;gap:8px">
-          <a href="aurora-rays-creatives.html" target="_blank" class="btn btn-ghost btn-sm">🔗 Full Creative Suite</a>
-          <button class="btn btn-brand btn-sm" onclick="showToast('🎨 Creative builder opened!')">+ New Creative</button>
-        </div>
-      </div>
-      <div class="grid-3" style="gap:14px" id="creatives-grid"></div>
-    </div>
-
-    <!-- PRICING -->
-    <div class="view" id="view-pricing">
-      <div class="stats-grid">
-        <div class="stat-card brand-accent"><div class="stat-icon">💰</div><div class="stat-label">Avg Contract Value</div><div class="stat-value">$997/mo</div><div class="stat-change up">Market standard</div></div>
-        <div class="stat-card green"><div class="stat-icon">📅</div><div class="stat-label">Annual Value</div><div class="stat-value">$11,964</div><div class="stat-change up">Per client/yr</div></div>
-        <div class="stat-card orange"><div class="stat-icon">♾️</div><div class="stat-label">LTV (24-month)</div><div class="stat-value">$23,928</div><div class="stat-change up">Per client</div></div>
-        <div class="stat-card blue"><div class="stat-icon">🤝</div><div class="stat-label">Active Clients</div><div class="stat-value">284</div><div class="stat-change up">↑ 18.4%</div></div>
-      </div>
-      <div class="card-title mb-16">Aurora Rays LLC — Pricing Tiers (Market Standard)</div>
-      <div class="grid-3" style="gap:16px" id="pricing-grid"></div>
-      <div class="card mt-16">
-        <div class="card-header"><div class="card-title">Revenue by Plan</div></div>
-        <div class="table-wrap"><table>
-          <thead><tr><th>Plan</th><th>Price</th><th>Clients</th><th>MRR</th><th>% of Revenue</th></tr></thead>
-          <tbody>
-            <tr><td>⭐ Starter</td><td>$497/mo</td><td>142</td><td class="text-success font-bold">$70,574</td><td>38%</td></tr>
-            <tr><td>🚀 Growth</td><td>$997/mo</td><td>98</td><td class="text-success font-bold">$97,706</td><td>52%</td></tr>
-            <tr><td>⚡ Scale</td><td>$1,997/mo</td><td>34</td><td class="text-success font-bold">$67,898</td><td>36%</td></tr>
-            <tr><td>👑 Enterprise</td><td>$4,997/mo</td><td>10</td><td class="text-success font-bold">$49,970</td><td>27%</td></tr>
-            <tr><td>🔧 One-Time Setup</td><td>$2,497</td><td>—</td><td class="text-success font-bold">$12,485/mo avg</td><td>7%</td></tr>
+        <table class="data-table" id="contacts-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Stage</th>
+              <th>Score</th>
+              <th>LTV</th>
+              <th>Last Activity</th>
+            </tr>
+          </thead>
+          <tbody id="contacts-body">
+            <!-- Populated by renderContacts() -->
           </tbody>
-        </table></div>
+        </table>
       </div>
-    </div>
+    </section>
 
-    <!-- COPY BANK -->
-    <div class="view" id="view-copy">
+    <!-- ACQUISITION VIEW -->
+    <section class="view" id="view-acquisition">
       <div class="card">
-        <div class="card-header"><div class="card-title">✍️ Aurora Rays — Master Copy Bank</div><button class="btn btn-brand btn-sm" onclick="showToast('✅ All copy exported!')">Export All</button></div>
-        <div class="tabs">
-          <div class="tab active" onclick="setTab(this)">All Copy</div>
-          <div class="tab" onclick="setTab(this)">Google</div>
-          <div class="tab" onclick="setTab(this)">LinkedIn</div>
-          <div class="tab" onclick="setTab(this)">Meta</div>
-          <div class="tab" onclick="setTab(this)">TikTok</div>
-          <div class="tab" onclick="setTab(this)">Email</div>
+        <div class="card-header">Ad Channels</div>
+        <div class="ad-grid" id="ad-cards">
+          <!-- Populated by renderAdCards() -->
         </div>
-        <div class="table-wrap"><table>
-          <thead><tr><th>Channel</th><th>Type</th><th>Headline / Copy</th><th>CTA</th><th>Audience</th><th>Hook</th></tr></thead>
-          <tbody id="copy-table"></tbody>
-        </table></div>
       </div>
-    </div>
+    </section>
 
-  </div>
-</div>
-</div>
+    <!-- CONVERSION VIEW -->
+    <section class="view" id="view-conversion">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">A/B Tests</div>
+          <div id="ab-tests">
+            <!-- Populated by renderABTests() -->
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Funnel</div>
+          <div id="funnel">
+            <!-- Populated by renderFunnel() -->
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">Landing Pages</div>
+        <div id="landing-pages">
+          <!-- Populated by renderLandingPages() -->
+        </div>
+      </div>
+    </section>
 
-<div id="toast"><span class="toast-icon">✅</span><span id="toast-msg">Done!</span></div>
+    <!-- NURTURE VIEW -->
+    <section class="view" id="view-nurture">
+      <div class="card">
+        <div class="card-header">Email Sequences</div>
+        <div id="sequences">
+          <!-- Populated by renderSequences() -->
+        </div>
+      </div>
+    </section>
 
-<script>
-const Store = {
-  contacts:[
-    {id:1,name:"Marcus Chen",email:"m.chen@growthagency.com",company:"GrowthAgency",status:"hot-lead",score:91,source:"linkedin",plan:"Growth",joined:"Jan 18"},
-    {id:2,name:"Sarah Williams",email:"s.w@ecombrand.co",company:"EcomBrand Co",status:"demo-booked",score:84,source:"google",plan:"Scale",joined:"Jan 15"},
-    {id:3,name:"James Park",email:"james@saasstart.io",company:"SaaS Startup",status:"lead",score:72,source:"tiktok",plan:"Starter",joined:"Jan 20"},
-    {id:4,name:"Lisa Torres",email:"lisa@localbiz.com",company:"LocalBiz LLC",status:"lead",score:65,source:"facebook",plan:"Starter",joined:"Jan 19"},
-    {id:5,name:"David Kim",email:"d.kim@mediahouse.co",company:"MediaHouse",status:"client",score:96,source:"google",plan:"Enterprise",joined:"Dec 10"},
-    {id:6,name:"Priya Sharma",email:"priya@scaleco.io",company:"ScaleCo",status:"client",score:88,source:"linkedin",plan:"Growth",joined:"Nov 28"},
-    {id:7,name:"Tyler Brooks",email:"tyler@agencyX.com",company:"Agency X",status:"client",score:93,source:"linkedin",plan:"Scale",joined:"Dec 5"},
-    {id:8,name:"Zoe Martinez",email:"zoe@brandboost.co",company:"BrandBoost",status:"demo-booked",score:77,source:"facebook",plan:"Growth",joined:"Jan 17"},
-  ],
-  campaigns:[
-    {id:1,name:"Aurora Rays — High Intent",channel:"google",status:"active",budget:5000,spent:5000,clicks:6200,impressions:84000,conversions:434,ctr:7.4,cpc:0.81,roas:5.4,leads:434},
-    {id:2,name:"B2B Decision Makers",channel:"linkedin",status:"active",budget:3500,spent:3500,clicks:2800,impressions:48000,conversions:315,ctr:5.8,cpc:1.25,roas:6.0,leads:315},
-    {id:3,name:"Awareness — Business Owners",channel:"facebook",status:"active",budget:3000,spent:3000,clicks:5400,impressions:92000,conversions:270,ctr:5.9,cpc:0.56,roas:4.9,leads:270},
-    {id:4,name:"TikTok POV Hook",channel:"tiktok",status:"active",budget:1500,spent:1500,clicks:3200,impressions:124000,conversions:160,ctr:2.6,cpc:0.47,roas:4.0,leads:160},
-    {id:5,name:"YouTube Brand Authority",channel:"youtube",status:"active",budget:1200,spent:1200,clicks:840,impressions:62000,conversions:72,ctr:1.4,cpc:1.43,roas:3.75,leads:72},
-    {id:6,name:"Display Retargeting",channel:"native",status:"active",budget:800,spent:800,clicks:960,impressions:38000,conversions:33,ctr:2.5,cpc:0.83,roas:3.3,leads:33},
-  ],
-  sequences:[
-    {id:1,name:"Lead Audit Sequence",status:"active",subscribers:1284,emails:7,openRate:68,clickRate:34,conversionRate:37.5,revenue:28560,icon:"🌅"},
-    {id:2,name:"Demo Confirmation + Prep",status:"active",subscribers:480,emails:3,openRate:84,clickRate:48,conversionRate:25,revenue:23928,icon:"📅"},
-    {id:3,name:"Client Onboarding",status:"active",subscribers:284,emails:5,openRate:76,clickRate:42,conversionRate:100,revenue:0,icon:"🚀"},
-    {id:4,name:"Starter to Growth Upsell",status:"active",subscribers:142,emails:3,openRate:52,clickRate:28,conversionRate:18.4,revenue:18840,icon:"⬆️"},
-  ],
-  deals:[
-    {id:1,contact:"Marcus Chen",company:"GrowthAgency",value:11964,stage:"proposal",probability:80},
-    {id:2,contact:"Sarah Williams",company:"EcomBrand Co",value:23964,stage:"negotiation",probability:75},
-    {id:3,contact:"Zoe Martinez",company:"BrandBoost",value:11964,stage:"qualified",probability:60},
-    {id:4,contact:"James Park",company:"SaaS Startup",value:5964,stage:"discovery",probability:45},
-    {id:5,contact:"Lisa Torres",company:"LocalBiz LLC",value:5964,stage:"proposal",probability:55},
-  ],
-  workflows:[
-    {id:1,name:"Ad Click to A/B Landing Page",trigger:"Ad Click Detected",actions:["Route 50% Variant A","Route 50% Variant B","Track UTM Source","Fire Conversion Pixel"],status:"active",runs:18400,lastRun:"Live"},
-    {id:2,name:"Form Submit to Lead Audit Sequence",trigger:"Form Submitted",actions:["Create Lead Profile","Score Lead","Send Audit Email #1","Add to CRM"],status:"active",runs:1284,lastRun:"Live"},
-    {id:3,name:"Score Over 80 to Fast-Track Demo",trigger:"Lead Score > 80",actions:["Tag: hot-lead","Send Demo Invite","Create CRM Deal","Notify Sales"],status:"active",runs:187,lastRun:"Live"},
-    {id:4,name:"Demo Booked to Confirmation Flow",trigger:"Demo Scheduled",actions:["Send Confirmation Email","Send Prep Email Day-1","Send Reminder 1h Before"],status:"active",runs:480,lastRun:"Live"},
-    {id:5,name:"No-Show to Reschedule (1h)",trigger:"Demo No-Show",actions:["Wait 1 Hour","Send Reschedule Email","Add to Follow-up Queue"],status:"active",runs:96,lastRun:"Jan 22"},
-    {id:6,name:"Deal Won to Onboarding",trigger:"Deal Marked Won",actions:["Send Welcome Email","Start Onboarding Sequence","Create Setup Checklist","Assign Account Manager"],status:"active",runs:24,lastRun:"Live"},
-    {id:7,name:"ROAS Over 5x to Scale Budget",trigger:"Campaign ROAS > 5x",actions:["Increase Budget 25%","Log Scale Event","Send Slack Alert","Update Dashboard"],status:"active",runs:6,lastRun:"Jan 21"},
-    {id:8,name:"CTR Under 2% to Pause and Refresh",trigger:"Ad CTR < 2% for 3 days",actions:["Pause Ad Creative","Queue New Creative","Alert Team","Log Pause Event"],status:"active",runs:2,lastRun:"Jan 22"},
-    {id:9,name:"14-Day Inactive to Re-engage",trigger:"No Activity > 14 Days",actions:["Add to Cold Segment","Send Win-Back Email","Reduce Bid on Retarget"],status:"active",runs:412,lastRun:"Live"},
-    {id:10,name:"Starter 30d to Upsell Growth",trigger:"Client on Starter > 30 Days",actions:["Tag: upsell-ready","Send Upsell Email #1","Wait 3 Days","Send Upsell Email #2"],status:"active",runs:142,lastRun:"Live"},
-  ],
-  loyalty:[
-    {id:1,contact:"David Kim",points:4997,tier:"Enterprise",totalSpend:49970,nextReward:"Annual discount at 6000pts"},
-    {id:2,contact:"Tyler Brooks",points:1997,tier:"Scale",totalSpend:23964,nextReward:"Free audit at 2500pts"},
-    {id:3,contact:"Priya Sharma",points:997,tier:"Growth",totalSpend:11964,nextReward:"Strategy session at 1500pts"},
-    {id:4,contact:"Zoe Martinez",points:497,tier:"Starter",totalSpend:5964,nextReward:"Free template pack at 1000pts"},
-    {id:5,contact:"James Park",points:248,tier:"Trial",totalSpend:0,nextReward:"Upgrade discount at 500pts"},
-  ],
-  events:[
-    {type:"lead",contact:"Marcus Chen",time:"Just now",color:"purple",text:"<strong>Marcus Chen</strong> booked a demo via LinkedIn B2B campaign — Score: 91 🔥"},
-    {type:"client",contact:"Sarah Williams",time:"4m ago",color:"green",text:"<strong>Sarah Williams</strong> signed Scale plan — $1,997/mo · Onboarding triggered 🌅"},
-    {type:"rule",campaign:"Google High Intent",time:"12m ago",color:"orange",text:"🤖 Auto-rule: Google ROAS = 5.4× → Budget scaled 25% to $6,250"},
-    {type:"email",contact:"James Park",sequence:"Lead Audit",time:"18m ago",color:"blue",text:"<strong>James Park</strong> opened email #5 'Competitors are doing this' — Score: 72→81"},
-    {type:"rule",ad:"TikTok Before/After",time:"28m ago",color:"orange",text:"🤖 Auto-rule: TikTok 'Before/After' CTR = 1.4% → Paused, new creative queued"},
-    {type:"upsell",contact:"Priya Sharma",time:"41m ago",color:"green",text:"<strong>Priya Sharma</strong> upgraded Starter → Growth — +$500/mo revenue"},
-  ],
-  channelRevenue:[
-    {channel:"Google Search",revenue:27000,spend:5000,roas:5.4,leads:434,color:"#4285F4"},
-    {channel:"LinkedIn",revenue:21000,spend:3500,roas:6.0,leads:315,color:"#0A66C2"},
-    {channel:"Meta Ads",revenue:14775,spend:3000,roas:4.9,leads:270,color:"#1877F2"},
-    {channel:"TikTok",revenue:6000,spend:1500,roas:4.0,leads:160,color:"#A78BFA"},
-    {channel:"YouTube",revenue:4500,spend:1200,roas:3.75,leads:72,color:"#FF4444"},
-    {channel:"Display",revenue:1500,spend:800,roas:1.9,leads:33,color:"#F59E0B"},
-  ],
-  kpis:[
-    {name:"Cost Per Lead",target:"< $45",actual:"$41.20",hit:true},
-    {name:"Cost Per Demo",target:"< $120",actual:"$109",hit:true},
-    {name:"Cost Per Client",target:"< $800",actual:"$625",hit:true},
-    {name:"Blended ROAS",target:"> 5x",actual:"4.99x",hit:false},
-    {name:"Email Open Rate",target:"> 42%",actual:"48.4%",hit:true},
-    {name:"Demo to Client Rate",target:"> 25%",actual:"25%",hit:true},
-    {name:"Monthly New Clients",target:"20+",actual:"24",hit:true},
-    {name:"Monthly Revenue",target:"$19,940+",actual:"$74,775",hit:true},
-    {name:"Client Retention",target:"> 95%",actual:"95.8%",hit:true},
-    {name:"LTV (90-day)",target:"$2,991",actual:"$2,991",hit:true},
-  ],
-  creatives:[
-    {name:"Google RSA — High Intent",channel:"google",status:"active",ctr:"7.4%",headline:"Your Business. Fully Automated.",thumb:"📡",perf:"top"},
-    {name:"Google RSA — DFY",channel:"google",status:"active",ctr:"6.1%",headline:"Done-For-You Marketing Automation",thumb:"🤖",perf:"top"},
-    {name:"LinkedIn — Competitor FOMO",channel:"linkedin",status:"active",ctr:"5.8%",headline:"Your competitors are automating. Are you?",thumb:"💼",perf:"top"},
-    {name:"LinkedIn — Pain Point",channel:"linkedin",status:"active",ctr:"4.9%",headline:"Still doing marketing manually in 2025?",thumb:"😤",perf:"good"},
-    {name:"LinkedIn — Revenue Hook",channel:"linkedin",status:"active",ctr:"4.2%",headline:"Add $10K/mo without hiring anyone",thumb:"💰",perf:"good"},
-    {name:"Meta Feed — Brand Promise",channel:"facebook",status:"active",ctr:"5.9%",headline:"Your Business. Fully Automated.",thumb:"📘",perf:"top"},
-    {name:"Meta Feed — Retargeting",channel:"facebook",status:"active",ctr:"8.2%",headline:"Still thinking about automating?",thumb:"🔄",perf:"top"},
-    {name:"IG Story — Automation",channel:"instagram",status:"active",ctr:"4.8%",headline:"Set it once. Grow forever.",thumb:"📱",perf:"good"},
-    {name:"TikTok — POV Hook",channel:"tiktok",status:"active",ctr:"3.8%",headline:"POV: You just automated your marketing",thumb:"🎵",perf:"good"},
-    {name:"TikTok — What If Hook",channel:"tiktok",status:"active",ctr:"3.1%",headline:"What if your marketing ran itself?",thumb:"🤔",perf:"good"},
-    {name:"TikTok — Before/After",channel:"tiktok",status:"paused",ctr:"1.4%",headline:"Before Aurora Rays vs After",thumb:"⏸️",perf:"low"},
-    {name:"YouTube — 30s Skippable",channel:"youtube",status:"active",ctr:"1.4%",headline:"Most businesses lose leads every day",thumb:"▶️",perf:"good"},
-    {name:"728x90 Leaderboard",channel:"display",status:"active",ctr:"0.9%",headline:"Your Business. Fully Automated.",thumb:"🖥️",perf:"good"},
-    {name:"300x250 Rectangle",channel:"display",status:"active",ctr:"1.3%",headline:"Set it once. Grow forever.",thumb:"📐",perf:"good"},
-    {name:"Email — Audit Welcome",channel:"email",status:"active",ctr:"34%",headline:"Your Free Audit is Ready",thumb:"📧",perf:"top"},
-    {name:"Email — FOMO Day 9",channel:"email",status:"active",ctr:"28%",headline:"Your competitors are already doing this...",thumb:"⚡",perf:"top"},
-  ],
-  copyBank:[
-    {channel:"google",type:"Headline",text:"Your Business. Fully Automated.",cta:"Book Free Call",audience:"All business owners",hook:"Brand promise"},
-    {channel:"google",type:"Headline",text:"Done-For-You Marketing Automation",cta:"Get Started",audience:"Overwhelmed owners",hook:"DFY offer"},
-    {channel:"google",type:"Headline",text:"Stop Losing Leads to Manual Follow-Up",cta:"Free Audit",audience:"High-intent",hook:"Pain point"},
-    {channel:"google",type:"Description",text:"Aurora Rays automates your entire marketing stack — email, ads, CRM, analytics. Set it once. Grow forever. From $497/mo.",cta:"Book Free Call",audience:"All",hook:"Full value prop"},
-    {channel:"linkedin",type:"Headline",text:"Your competitors are automating their marketing. Are you?",cta:"Free Strategy Session",audience:"CEOs, Founders",hook:"Competitive FOMO"},
-    {channel:"linkedin",type:"Headline",text:"Still doing marketing manually in 2025?",cta:"Book Free Audit",audience:"Agency owners",hook:"Pain point"},
-    {channel:"linkedin",type:"Headline",text:"Add $10K/mo to your agency without hiring anyone",cta:"See How",audience:"Agencies",hook:"Revenue hook"},
-    {channel:"facebook",type:"Headline",text:"Your Business. Fully Automated.",cta:"Get Free Strategy Call",audience:"Business owners",hook:"Brand promise"},
-    {channel:"facebook",type:"Headline",text:"Still thinking about automating?",cta:"Book Free Call",audience:"Retargeting",hook:"Retargeting nudge"},
-    {channel:"tiktok",type:"Hook 0-3s",text:"POV: You just automated your entire marketing stack",cta:"Get Free Strategy Call",audience:"Solopreneurs",hook:"POV viral"},
-    {channel:"tiktok",type:"Hook 0-3s",text:"What if your marketing ran itself?",cta:"See How It Works",audience:"All",hook:"What if"},
-    {channel:"email",type:"Subject Line",text:"Your Free Marketing Automation Audit is Ready",cta:"Book Your Free Strategy Call",audience:"New leads",hook:"Welcome"},
-    {channel:"email",type:"Subject Line",text:"Your competitors are already doing this...",cta:"See What They're Doing",audience:"Day 9 nurture",hook:"FOMO"},
-    {channel:"email",type:"Subject Line",text:"Upgrade offer — 20% off Growth plan this week only",cta:"Upgrade Now",audience:"Starter clients",hook:"Upsell"},
-  ],
-  pricingTiers:[
-    {name:"Aurora Starter",price:"$497",period:"/mo",icon:"⭐",color:"var(--info)",clients:142,features:["Email automation","CRM integration","1 ad channel","Monthly report","Email support"]},
-    {name:"Aurora Growth",price:"$997",period:"/mo",icon:"🚀",color:"var(--brand)",clients:98,features:["Full 5-channel ad automation","Email + SMS sequences","CRM + analytics","Weekly reports","Priority support","A/B testing"]},
-    {name:"Aurora Scale",price:"$1,997",period:"/mo",icon:"⚡",color:"var(--amber)",clients:34,features:["Everything in Growth","DFY setup included","Dedicated strategist","Custom integrations","Daily reports","Slack access"]},
-    {name:"Aurora Enterprise",price:"$4,997",period:"/mo",icon:"👑",color:"var(--success)",clients:10,features:["Everything in Scale","White-glove service","Team training","Custom dashboards","SLA guarantee","Dedicated account manager"]},
-    {name:"Aurora Setup",price:"$2,497",period:"one-time",icon:"🔧",color:"var(--warning)",clients:null,features:["Full automation build","No monthly fee","14-day delivery","30-day support","Handoff training","Documentation"]},
-  ],
-  tickerItems:[
-    "🌅 New lead via LinkedIn B2B — Marcus Chen booked a demo · Score: 91",
-    "✅ Sarah Williams signed Scale plan — $1,997/mo · Onboarding triggered",
-    "🤖 Auto-rule: Google ROAS = 5.4x → Budget scaled 25% to $6,250",
-    "📧 James Park opened email #5 — Score jumped 72 to 81 · Fast-track triggered",
-    "⏸️ TikTok Before/After CTR = 1.4% → Auto-paused, new creative queued",
-    "⬆️ Priya Sharma upgraded Starter to Growth — +$500/mo",
-    "📊 Blended ROAS: 4.99x — 9/10 KPI targets hit",
-    "🎯 Landing Page Variant B winning at 10.3% conv. rate",
-    "⚡ 10 automation workflows running · 4,820 total runs · 218h saved",
-    "💰 Monthly revenue: $74,775 · up 38.4% vs last month",
-  ],
-};
+    <!-- SALES VIEW -->
+    <section class="view" id="view-sales">
+      <div class="card">
+        <div class="card-header">Pipeline</div>
+        <div class="pipeline" id="pipeline">
+          <!-- Populated by renderPipeline() -->
+        </div>
+      </div>
+    </section>
 
-const pageMeta={
-  dashboard:{title:"🌅 Aurora Rays LLC — Campaign Dashboard",subtitle:"Full-stack automation engine · 6 channels · $15,000/mo budget · All KPIs on track"},
-  contacts:{title:"👥 Leads & Clients",subtitle:"All leads, demo-booked, and active clients"},
-  acquisition:{title:"📡 Acquisition",subtitle:"6 active campaigns · Google · LinkedIn · Meta · TikTok · YouTube · Display"},
-  conversion:{title:"🎯 Conversion",subtitle:"Landing pages, A/B tests & lead capture optimization"},
-  nurture:{title:"💌 Nurture",subtitle:"Email sequences, segmentation & behavioral triggers"},
-  sales:{title:"💼 Sales CRM",subtitle:"Pipeline management, demos & automated follow-ups"},
-  retention:{title:"🏆 Retention",subtitle:"Client success, loyalty & upsell flows"},
-  analytics:{title:"📊 Analytics",subtitle:"Unified attribution, KPI scorecard & ROAS tracking"},
-  orchestration:{title:"🔗 Automation Workflows",subtitle:"10 active workflows connecting all campaign modules"},
-  creatives:{title:"🎨 Ad Creatives",subtitle:"16 creatives across 6 channels — Aurora Rays LLC campaign"},
-  pricing:{title:"💰 Pricing Tiers",subtitle:"Market-standard pricing · $497 to $4,997/mo · One-time setup available"},
-  copy:{title:"✍️ Copy Bank",subtitle:"All headlines, descriptions & CTAs organized by channel"},
-};
+    <!-- RETENTION VIEW -->
+    <section class="view" id="view-retention">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">Loyalty Tiers</div>
+          <div id="loyalty-grid">
+            <!-- Populated by renderLoyalty() -->
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Automated Rules</div>
+          <div id="rules">
+            <!-- Populated by renderRules() -->
+          </div>
+        </div>
+      </div>
+    </section>
 
-function navigate(view){
-  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  const el=document.getElementById('view-'+view);
-  if(el)el.classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n=>{
-    if(n.getAttribute('onclick')&&n.getAttribute('onclick').includes("'"+view+"'"))n.classList.add('active');
-  });
-  const meta=pageMeta[view]||{title:view,subtitle:''};
-  document.getElementById('page-title').textContent=meta.title;
-  document.getElementById('page-subtitle').textContent=meta.subtitle;
-}
+    <!-- ANALYTICS VIEW -->
+    <section class="view" id="view-analytics">
+      <div class="card">
+        <div class="card-header">KPI Scorecard</div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Metric</th><th>Target</th><th>Actual</th><th>Status</th></tr>
+          </thead>
+          <tbody id="kpi-table">
+            <!-- Populated by renderKPITable() -->
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-header">Channel Attribution</div>
+        <div id="attribution">
+          <!-- Populated by renderAttribution() -->
+        </div>
+      </div>
+    </section>
 
-let toastTimer;
-function showToast(msg){
-  const t=document.getElementById('toast');
-  document.getElementById('toast-msg').textContent=msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),3200);
-}
-function setTab(el){el.closest('.tabs').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');}
+    <!-- ORCHESTRATION VIEW -->
+    <section class="view" id="view-orchestration">
+      <div class="card">
+        <div class="card-header">Automation Workflows</div>
+        <div class="workflow-grid" id="workflows">
+          <!-- Populated by renderWorkflows() -->
+        </div>
+      </div>
+    </section>
 
-const avatarColors=['#7C3AED','#F59E0B','#22C55E','#3B82F6','#EF4444','#EC4899','#14B8A6','#F97316'];
-function getColor(i){return avatarColors[i%avatarColors.length];}
-function initials(name){return name.split(' ').map(w=>w[0]).join('').toUpperCase();}
+    <!-- CREATIVES VIEW -->
+    <section class="view" id="view-creatives">
+      <div class="card">
+        <div class="card-header">Creative Assets</div>
+        <div class="creative-grid" id="creatives">
+          <!-- Populated by renderCreatives() -->
+        </div>
+      </div>
+    </section>
 
-function renderTicker(){
-  const el=document.getElementById('ticker-content');
-  if(!el)return;
-  const items=[...Store.tickerItems,...Store.tickerItems];
-  el.innerHTML=items.map(i=>'<span>'+i+'</span>').join('');
-}
+    <!-- COPY BANK VIEW -->
+    <section class="view" id="view-copy">
+      <div class="card">
+        <div class="card-header">Copy Bank</div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Asset</th><th>Type</th><th>Channel</th><th>Content</th><th>Status</th></tr>
+          </thead>
+          <tbody id="copy-body">
+            <!-- Populated by renderCopyBank() -->
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-function renderDashCampaigns(){
-  const tbody=document.getElementById('dash-campaigns');
-  if(!tbody)return;
-  tbody.innerHTML=Store.campaigns.map(c=>'<tr><td><strong>'+c.name+'</strong></td><td>$'+c.spent.toLocaleString()+'</td><td>'+c.leads+'</td><td style="color:var(--brand);font-weight:700">'+c.roas+'x</td><td><span class="badge badge-green">Active</span></td></tr>').join('');
-}
+  </main>
 
-function renderEventFeed(){
-  const feed=document.getElementById('event-feed');
-  if(!feed)return;
-  feed.innerHTML=Store.events.map(e=>'<div class="event-item"><div class="event-dot '+e.color+'"></div><div class="event-text">'+e.text+'</div><div class="event-time">'+e.time+'</div></div>').join('');
-}
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
 
-function renderRevenueChart(id){
-  const el=document.getElementById(id);
-  if(!el)return;
-  const max=Math.max(...Store.channelRevenue.map(c=>c.revenue));
-  el.innerHTML=Store.channelRevenue.map(c=>{
-    const h=Math.round((c.revenue/max)*100);
-    return '<div class="bar-group"><div class="bar" style="height:'+h+'%;background:'+c.color+';opacity:.85" title="'+c.channel+': $'+c.revenue.toLocaleString()+' · '+c.roas+'x ROAS"></div><div class="bar-label">'+c.channel.split(' ')[0]+'</div></div>';
-  }).join('');
-}
+  <!-- ═══════════════════════════════════════════════
+       DATA STORE
+  ═══════════════════════════════════════════════ -->
+  <script src="src/data/store.js"></script>
 
-function renderContacts(filter){
-  filter=filter||'';
-  const tbody=document.getElementById('contacts-table');
-  if(!tbody)return;
-  const filtered=filter?Store.contacts.filter(c=>c.name.toLowerCase().includes(filter.toLowerCase())||c.company.toLowerCase().includes(filter.toLowerCase())):Store.contacts;
-  const statusBadge={client:'badge-green','hot-lead':'badge-red','demo-booked':'badge-purple',lead:'badge-blue'};
-  tbody.innerHTML=filtered.map(function(c,i){
-    const sc=c.score>=80?'var(--success)':c.score>=60?'var(--warning)':'var(--danger)';
-    return '<tr><td><div style="display:flex;align-items:center;gap:10px"><div class="contact-avatar" style="background:'+getColor(i)+'">'+initials(c.name)+'</div><div><div style="font-weight:600;color:var(--text)">'+c.name+'</div><div style="font-size:11px;color:var(--text3)">'+c.email+'</div></div></div></td><td>'+c.company+'</td><td><span class="badge '+(statusBadge[c.status]||'badge-gray')+'">'+c.status+'</span></td><td><div class="score-bar"><div class="score-num" style="color:'+sc+'">'+c.score+'</div><div class="score-track"><div class="score-fill" style="width:'+c.score+'%;background:'+sc+'"></div></div></div></td><td><span class="ch-pill ch-'+c.source+'">'+c.source+'</span></td><td><span class="badge badge-purple">'+c.plan+'</span></td><td style="font-size:12px;color:var(--text3)">'+c.joined+'</td><td><div style="display:flex;gap:4px"><button class="btn btn-ghost btn-sm" onclick="showToast(\'📧 Email sent!\')">Email</button><button class="btn btn-ghost btn-sm" onclick="showToast(\'👤 Profile opened!\')">View</button></div></td></tr>';
-  }).join('');
-}
-function filterContacts(v){renderContacts(v);}
+  <!-- ═══════════════════════════════════════════════
+       MODULE SCRIPTS
+  ═══════════════════════════════════════════════ -->
+  <script src="src/js/modules/acquisition.js"></script>
+  <script src="src/js/modules/conversion.js"></script>
+  <script src="src/js/modules/nurture.js"></script>
+  <script src="src/js/modules/sales.js"></script>
+  <script src="src/js/modules/retention.js"></script>
+  <script src="src/js/modules/analytics.js"></script>
+  <script src="src/js/modules/orchestration.js"></script>
 
-function renderAdCards(){
-  const el=document.getElementById('ad-cards');
-  if(!el)return;
-  const chLabel={google:'Google Search',linkedin:'LinkedIn',facebook:'Meta Ads',tiktok:'TikTok',youtube:'YouTube',native:'Display'};
-  el.innerHTML=Store.campaigns.map(function(c){
-    const pct=Math.round((c.spent/c.budget)*100);
-    return '<div class="ad-card"><div class="ad-card-header"><div class="ad-channel"><div class="channel-dot '+c.channel+'"></div>'+(chLabel[c.channel]||c.channel)+'</div><span class="badge badge-green">Active</span></div><div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px">'+c.name+'</div><div class="ad-metrics"><div class="ad-metric"><div class="ad-metric-label">Clicks</div><div class="ad-metric-value">'+c.clicks.toLocaleString()+'</div></div><div class="ad-metric"><div class="ad-metric-label">CTR</div><div class="ad-metric-value">'+c.ctr+'%</div></div><div class="ad-metric"><div class="ad-metric-label">CPC</div><div class="ad-metric-value">$'+c.cpc+'</div></div><div class="ad-metric"><div class="ad-metric-label">ROAS</div><div class="ad-metric-value" style="color:var(--brand)">'+c.roas+'x</div></div></div><div class="budget-bar"><div class="budget-label"><span>Spend: $'+c.spent.toLocaleString()+' / $'+c.budget.toLocaleString()+'</span><span>'+pct+'%</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+pct+'%;background:var(--brand)"></div></div></div><div style="display:flex;gap:6px;margin-top:12px"><button class="btn btn-ghost btn-sm" style="flex:1" onclick="showToast(\'✏️ Campaign editor opened!\')">Edit</button><button class="btn btn-brand btn-sm" style="flex:1" onclick="showToast(\'📈 Scaling budget 25%!\')">Scale ↑</button></div></div>';
-  }).join('');
-}
+  <!-- ═══════════════════════════════════════════════
+       CORE APP
+  ═══════════════════════════════════════════════ -->
+  <script src="src/js/app.js"></script>
 
-function renderRules(){
-  const el=document.getElementById('rules-list');
-  if(!el)return;
-  const rules=[
-    {icon:"📈",name:"Scale Winners",desc:"ROAS > 5x for 48h → Increase budget 25%",stat:"Fired 6x · Earned $18K extra"},
-    {icon:"⏸️",name:"Pause Low CTR",desc:"CTR < 2% for 3 days → Pause + queue new creative",stat:"Fired 2x · Prevented $840 waste"},
-    {icon:"🎯",name:"Retarget Hot Leads",desc:"Lead score > 80 → Add to retargeting audience",stat:"Fired 187x · 34 converted to clients"},
-    {icon:"💸",name:"Budget Alert",desc:"Daily spend > 90% → Send Slack alert",stat:"Fired 4x · Zero overspend"},
-    {icon:"🔄",name:"Refresh Creative",desc:"Meta frequency > 3.5 → Swap creative",stat:"Fired 3x · CTR restored to 5.9%"},
-    {icon:"📉",name:"Reduce Weekend Bids",desc:"Day = Sat/Sun → Reduce bids 20%",stat:"Saves ~$420/mo"},
-  ];
-  el.innerHTML='<div class="table-wrap"><table><thead><tr><th>Rule</th><th>Trigger</th><th>Action</th><th>Performance</th><th>Status</th></tr></thead><tbody>'+
-  rules.map(r=>'<tr><td><strong>'+r.icon+' '+r.name+'</strong></td><td style="font-size:12px;color:var(--text3)">'+r.desc.split('→')[0]+'</td><td style="font-size:12px;color:var(--success)">'+r.desc.split('→')[1]+'</td><td style="font-size:11px;color:var(--text3)">'+r.stat+'</td><td><span class="badge badge-green">Active</span></td></tr>').join('')+
-  '</tbody></table></div>';
-}
-
-function renderSequences(){
-  const el=document.getElementById('sequence-list');
-  if(!el)return;
-  el.innerHTML=Store.sequences.map(function(s){
-    return '<div class="sequence-card" onclick="showToast(\'📧 '+s.name+' opened!\')"><div class="sequence-icon">'+s.icon+'</div><div class="sequence-info"><div class="sequence-name">'+s.name+'</div><div class="sequence-meta">'+s.emails+' emails · '+s.subscribers.toLocaleString()+' subscribers</div></div><div class="sequence-stats"><div class="seq-stat"><div class="seq-stat-val">'+s.openRate+'%</div><div class="seq-stat-label">Open</div></div><div class="seq-stat"><div class="seq-stat-val">'+s.clickRate+'%</div><div class="seq-stat-label">Click</div></div><div class="seq-stat"><div class="seq-stat-val" style="color:var(--brand)">'+(s.revenue>0?'$'+(s.revenue/1000).toFixed(1)+'K':s.conversionRate+'%')+'</div><div class="seq-stat-label">'+(s.revenue>0?'Revenue':'Conv')+'</div></div></div><span class="badge badge-green">'+s.status+'</span></div>';
-  }).join('');
-}
-
-function renderPipeline(){
-  const el=document.getElementById('pipeline-board');
-  if(!el)return;
-  const stages=['discovery','qualified','proposal','negotiation','won'];
-  const stageLabels={discovery:'Discovery',qualified:'Qualified',proposal:'Proposal',negotiation:'Negotiation',won:'Won 🎉'};
-  const stageColors={discovery:'var(--text3)',qualified:'var(--info)',proposal:'var(--warning)',negotiation:'var(--brand)',won:'var(--success)'};
-  el.innerHTML=stages.map(function(stage){
-    const sd=Store.deals.filter(d=>d.stage===stage);
-    const total=sd.reduce((s,d)=>s+d.value,0);
-    return '<div class="pipeline-col"><div class="pipeline-col-header"><div class="pipeline-col-title" style="color:'+stageColors[stage]+'">'+stageLabels[stage]+'</div><div class="pipeline-count">'+sd.length+'</div></div><div style="font-size:11px;color:var(--text3);margin-bottom:10px">'+(total>0?'$'+total.toLocaleString():'')+'</div>'+
-    sd.map(d=>'<div class="deal-card" onclick="showToast(\'💼 '+d.contact+' deal opened!\')"><div class="deal-name">'+d.contact+'</div><div class="deal-company">'+d.company+'</div><div style="display:flex;justify-content:space-between;align-items:center"><div class="deal-value" style="color:var(--brand)">$'+Math.round(d.value/12)+'/mo</div><div class="deal-prob">'+d.probability+'%</div></div></div>').join('')+
-    '<button class="btn btn-ghost btn-sm w-full" style="margin-top:4px" onclick="showToast(\'💼 New deal added!\')">+ Add</button></div>';
-  }).join('');
-}
-
-function renderLoyalty(){
-  const el=document.getElementById('loyalty-grid');
-  if(!el)return;
-  const tierClass={Enterprise:'tier-diamond',Scale:'tier-platinum',Growth:'tier-gold',Starter:'tier-silver',Trial:'tier-bronze'};
-  const tierEmoji={Enterprise:'👑',Scale:'⚡',Growth:'🚀',Starter:'⭐',Trial:'🆓'};
-  el.innerHTML=Store.loyalty.map(function(l){
-    return '<div class="loyalty-card" onclick="showToast(\'🏆 '+l.contact+' profile opened!\')"><span class="tier-badge '+(tierClass[l.tier]||'tier-bronze')+'">'+(tierEmoji[l.tier]||'⭐')+' '+l.tier+'</span><div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px">'+l.contact+'</div><div class="points-display" style="color:var(--brand)">'+l.points.toLocaleString()+'</div><div class="points-label">points</div><div class="divider"></div><div style="font-size:12px;color:var(--text3)">Total spend: <strong style="color:var(--text)">$'+l.totalSpend.toLocaleString()+'</strong></div><div style="font-size:11px;color:var(--brand);margin-top:4px">🎁 '+l.nextReward+'</div></div>';
-  }).join('');
-}
-
-function renderKPITable(){
-  const tbody=document.getElementById('kpi-table');
-  if(!tbody)return;
-  tbody.innerHTML=Store.kpis.map(k=>'<tr><td style="font-weight:600;color:var(--text)">'+k.name+'</td><td style="color:var(--text3)">'+k.target+'</td><td class="'+(k.hit?'text-success':'text-warning')+' font-bold">'+k.actual+'</td><td><span class="badge '+(k.hit?'badge-green':'badge-orange')+'">'+(k.hit?'✅ Hit':'⚠️ Close')+'</span></td><td style="font-size:12px;color:var(--text3)">'+(k.hit?'↑ On track':'→ Optimizing')+'</td></tr>').join('');
-}
-
-function renderAttribution(){
-  const el=document.getElementById('attribution-chart');
-  if(!el)return;
-  const max=Math.max(...Store.channelRevenue.map(c=>c.revenue));
-  el.innerHTML=Store.channelRevenue.map(c=>'<div class="attr-row"><div class="attr-channel">'+c.channel+'</div><div class="attr-bar-wrap"><div class="progress-bar"><div class="progress-fill" style="width:'+Math.round((c.revenue/max)*100)+'%;background:'+c.color+'"></div></div></div><div class="attr-value">$'+(c.revenue/1000).toFixed(1)+'K</div><div class="attr-roas" style="color:var(--brand)">'+c.roas+'x ROAS</div></div>').join('');
-}
-
-function renderWorkflows(){
-  const el=document.getElementById('workflow-list');
-  if(!el)return;
-  el.innerHTML=Store.workflows.map(function(w){
-    return '<div class="workflow-card"><div class="workflow-header"><div class="workflow-name">'+w.name+'</div><div style="display:flex;align-items:center;gap:8px"><span class="badge badge-green">'+w.status+'</span><button class="btn btn-ghost btn-sm" onclick="showToast(\'✏️ Workflow editor opened!\')">Edit</button></div></div><div class="workflow-flow"><div class="wf-node trigger">⚡ '+w.trigger+'</div>'+w.actions.map(a=>'<div class="wf-arrow">→</div><div class="wf-node action">✅ '+a+'</div>').join('')+'</div><div class="workflow-footer"><div class="wf-meta">🔄 '+w.runs.toLocaleString()+' runs</div><div class="wf-meta">🕐 '+w.lastRun+'</div><div style="margin-left:auto"><label class="toggle"><input type="checkbox" checked onchange="showToast(\'⚡ Workflow toggled!\')"/><span class="toggle-slider"></span></label></div></div></div>';
-  }).join('');
-}
-
-function renderCreatives(){
-  const el=document.getElementById('creatives-grid');
-  if(!el)return;
-  const perfBadge={top:'badge-green',good:'badge-blue',low:'badge-red'};
-  const perfLabel={top:'🏆 Top',good:'✅ Good',low:'⏸️ Paused'};
-  const chClass={google:'ch-google',linkedin:'ch-linkedin',facebook:'ch-facebook',instagram:'ch-facebook',tiktok:'ch-tiktok',youtube:'ch-youtube',display:'ch-native',native:'ch-native',email:'ch-email'};
-  el.innerHTML=Store.creatives.map(function(c){
-    return '<div class="creative-card" onclick="showToast(\'🎨 '+c.name+' opened!\')"><div class="creative-thumb"><div class="creative-thumb-icon">'+c.thumb+'</div><div class="creative-thumb-text">'+c.headline.substring(0,28)+(c.headline.length>28?'...':'')+'</div></div><div class="creative-body"><div class="creative-name">'+c.name+'</div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px"><span class="ch-pill '+(chClass[c.channel]||'ch-native')+'">'+c.channel+'</span><span class="badge '+(perfBadge[c.perf]||'badge-gray')+'">'+(perfLabel[c.perf]||c.perf)+'</span></div><div style="margin-top:8px;font-size:12px;color:var(--text3)">CTR: <strong style="color:var(--text)">'+c.ctr+'</strong></div></div></div>';
-  }).join('');
-}
-
-function renderPricing(){
-  const el=document.getElementById('pricing-grid');
-  if(!el)return;
-  el.innerHTML=Store.pricingTiers.map(function(t){
-    return '<div class="tier-card" onclick="showToast(\'💰 '+t.name+' selected!\')"><div style="font-size:28px;margin-bottom:8px">'+t.icon+'</div><div class="tier-name">'+t.name+'</div><div class="tier-price" style="color:'+t.color+'">'+t.price+'<span style="font-size:14px;font-weight:500;color:var(--text3)">'+t.period+'</span></div>'+(t.clients!==null?'<div style="font-size:12px;color:var(--text3);margin:6px 0">'+t.clients+' active clients</div>':'<div style="font-size:12px;color:var(--text3);margin:6px 0">One-time project</div>')+'<div class="divider"></div>'+t.features.map(f=>'<div class="tier-feature"><span style="color:'+t.color+'">✓</span>'+f+'</div>').join('')+'<button class="btn btn-brand btn-sm w-full" style="margin-top:12px;background:'+t.color+'" onclick="showToast(\'🚀 '+t.name+' selected!\')">Select Plan</button></div>';
-  }).join('');
-}
-
-function renderCopyBank(){
-  const tbody=document.getElementById('copy-table');
-  if(!tbody)return;
-  const chClass={google:'ch-google',linkedin:'ch-linkedin',facebook:'ch-facebook',tiktok:'ch-tiktok',email:'ch-email'};
-  tbody.innerHTML=Store.copyBank.map(function(c){
-    return '<tr><td><span class="ch-pill '+(chClass[c.channel]||'ch-native')+'">'+c.channel+'</span></td><td><span class="badge badge-gray">'+c.type+'</span></td><td style="max-width:280px;font-weight:500;color:var(--text)">'+c.text+'</td><td><button class="btn btn-brand btn-sm" onclick="showToast(\'✅ CTA copied: '+c.cta.replace(/'/g,"")+'!\')">'+c.cta+'</button></td><td style="color:var(--text3)">'+c.audience+'</td><td style="color:var(--brand);font-weight:600">'+c.hook+'</td></tr>';
-  }).join('');
-}
-
-function init(){
-  renderTicker();
-  renderDashCampaigns();
-  renderEventFeed();
-  renderRevenueChart('revenue-chart');
-  renderRevenueChart('analytics-chart');
-  renderContacts();
-  renderAdCards();
-  renderRules();
-  renderSequences();
-  renderPipeline();
-  renderLoyalty();
-  renderKPITable();
-  renderAttribution();
-  renderWorkflows();
-  renderCreatives();
-  renderPricing();
-  renderCopyBank();
-}
-
-document.addEventListener('DOMContentLoaded', init);
-</script>
 </body>
 </html>
