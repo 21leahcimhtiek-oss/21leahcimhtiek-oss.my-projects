@@ -14,4 +14,4 @@
 - [x] Create src/js/modules/analytics.js (blank module)
 - [x] Create src/js/modules/orchestration.js (blank module)
 - [x] Create README.md
-- [ ] Push to GitHub on new branch
+- [x] Push to GitHub on new branch
